@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Godstime Stories - All Round Stories</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#fef9f0;color:#222}
+header{background:#000;color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:5}
+header h1{font-size:22px}
+#search{width:90%;max-width:400px;padding:11px 16px;border-radius:25px;border:none;margin:12px auto;display:block}
+.fil{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.fil button{padding:6px 14px;border-radius:20px;border:1px solid #fff;background:#222;color:#fff}
+.fil button.active{background:#fff;color:#000}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;padding:14px;max-width:700px;margin:auto}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 3px 10px rgba(0,0,0,.07)}
+.card h3{font-size:17px;margin:8px 0}
+.card p{font-size:13px;color:#666}
+.tag{font-size:11px;background:#f0e6d3;padding:3px 8px;border-radius:10px}
+#reader{position:fixed;top:0;left:0;width:100%;height:100%;background:#fffef5;z-index:99;overflow-y:auto;padding:20px;display:none}
+#reader.show{display:block}
+#rTitle{font-size:24px;margin:15px 0 5px}
+#rMeta{font-size:12px;color:#888;margin-bottom:12px}
+#rContent{line-height:1.9;font-size:16px;white-space:pre-wrap}
+.back{background:#000;color:#fff;padding:10px 16px;border:none;border-radius:8px}
+.add{background:#25D366;color:#fff;padding:12px 18px;border-radius:25px;text-align:center;display:block;margin:20px auto;max-width:300px;text-decoration:none;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 Godstime All Round Stories</h1>
+<input id="search" placeholder="Search any story...">
+<div class="fil">
+<button class="active" data-f="all">All</button>
+<button data-f="Love">Love</button>
+<button data-f="Life">Life</button>
+<button data-f="Horror">Horror</button>
+<button data-f="Igbo">Igbo</button>
+<button data-f="Motivation">Motivation</button>
+</div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<a class="add" href="https://wa.me/234XXXXXXXXXX?text=I want to submit my story">+ Submit Your Story via WhatsApp</a>
+
+<div id="reader">
+<button class="back" onclick="closeR()">← Back to stories</button>
+<h2 id="rTitle"></h2>
+<div id="rMeta"></div>
+<div id="rContent"></div>
+</div>
+
+<script>
+const stories=[
+{t:"The Girl at Nkpor Junction",g:"Love",a:"Godstime",d:"She waited every evening not for a bus but for a promise...",c:"She waited every evening at Nkpor junction, not for a bus, but for a promise made 3 years ago.\n\nChinedu left for Lagos with nothing but Ghana-must-go and a promise: 'I will come back for you.'\n\nEveryone told Amara to move on. But love in Onitsha is stubborn.\n\nOn day 1,095, a dusty bus stopped. Chinedu stepped down in a suit, holding same ring box.\n\nSometimes waiting is not foolishness. It is faith."},
+{t:"The Last Barrel",g:"Life",a:"Godstime",d:"As a Petroleum student I thought oil was just crude until I visited Delta...",c:"As Petroleum Engineering student I thought oil was just crude. Until I visited a village in Delta where water burns.\n\nThis story is about what we gain and what they lose. And why I want to be different kind of engineer - one who restores, not just extracts."},
+{t:"Mama Nkechi's Egusi",g:"Igbo",a:"Godstime",d:"No one made egusi like Mama Nkechi until she forgot the recipe...",c:"No one made egusi like Mama Nkechi, until she forgot recipe.\n\nIt was not old age. It was grief. Since Papa died, her hands forgot how to measure joy.\n\nSo we, her children, had to remind her. Not with ingredients, but with laughter in kitchen again.\n\nIgbo proverb: 'Anya anaghị ahụ ụzọ, ụkwụ na-eduga.'"},
+{t:"Hostel Room 12 - 2AM",g:"Horror",a:"Godstime",d:"In UNIZIK hostel Room 12 is always locked but at 2AM you hear reading inside...",c:"In UNIZIK hostel, Room 12 is always locked. But at 2AM, you hear reading inside. Pages turning. Girl whispering formulas.\n\nThey say in 2019, final year student never woke up from reading. She still reads for exam that never ends.\n\nIf you listen close, she is reading YOUR matric number."},
+{t:"From 2.1 to First Class",g:"Motivation",a:"Godstime",d:"How I moved from almost giving up in 100 level to becoming top of my class...",c:"100 level Petroleum Engineering almost broke me. Thermodynamics gave me 32/100. I cried in library.\n\nMy lecturer said: 'Engineering is not for everyone.'\n\nI decided to prove him wrong, not with anger but with discipline.\n\n5AM library. No girlfriend distractions. Past questions like food.\n\n300 level, same lecturer shook my hand: 'You are now an example.'\n\nYour background does not define your final grade."},
+{t:"The Okada Man Who Saved Me",g:"Life",a:"Godstime",d:"I had no transport fare in Onitsha. This okada man taught me humanity...",c:"I had no transport fare in Onitsha Main Market. Rain was falling. I was stranded.\n\nAn okada man said 'Enter, pay when you have.'\n\nI thought it was trick. He drove me home for free.\n\nNext week I saw him again and paid double. He smiled: 'We help each other live.'\n\nKindness is still alive in Anambra."}
+];
+const grid=document.getElementById('grid');
+function show(list){
+grid.innerHTML='';
+list.forEach((s,i)=>{
+grid.innerHTML+=`<div class="card" onclick="openR(${stories.indexOf(s)})"><span class="tag">${s.g}</span><h3>${s.t}</h3><p>${s.d}</p></div>`;
+});
+}
+show(stories);
+document.getElementById('search').addEventListener('input',e=>{
+let q=e.target.value.toLowerCase();
+show(stories.filter(s=>s.t.toLowerCase().includes(q)||s.d.toLowerCase().includes(q)));
+});
+document.querySelectorAll('.fil button').forEach(b=>{
+b.addEventListener('click',()=>{
+document.querySelectorAll('.fil button').forEach(x=>x.classList.remove('active'));
+b.classList.add('active');
+let f=b.dataset.f;
+if(f=='all') show(stories); else show(stories.filter(s=>s.g==f));
+});
+});
+function openR(i){
+document.getElementById('rTitle').innerText=stories[i].t;
+document.getElementById('rMeta').innerText=stories[i].g+' • By '+stories[i].a;
+document.getElementById('rContent').innerText=stories[i].c;
+document.getElementById('reader').classList.add('show');
+window.scrollTo(0,0);
+}
+function closeR(){document.getElementById('reader').classList.remove('show')}
+</script>
+</body>
+  </html>
