@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GSTories</title>
+<style>
+body{margin:0;font-family:system-ui;background:#0b0f19;color:#e2e8f0}
+header{padding:16px;background:#111827;display:flex;justify-content:space-between;border-bottom:1px solid #1e293b}
+a{color:#38bdf8;text-decoration:none}
+.wrap{max-width:800px;margin:auto;padding:16px}
+.card{background:#121a2b;border:1px solid #1e293b;border-radius:16px;padding:18px;margin:12px 0;cursor:pointer}
+.cover{width:100%;max-height:400px;object-fit:cover;border-radius:12px;margin:12px 0}
+pre{white-space:pre-wrap;line-height:1.8}
+#reader{display:none;position:fixed;inset:0;background:#020617;padding:20px;overflow:auto;z-index:10}
+</style>
+</head>
+<body>
+<header>
+<b style="color:#fff">GSTories.com</b>
+<a href="index.html">Home</a>
+</header>
+
+<div class="wrap">
+<h2 style="color:#fff">Nigerian True Life Stories</h2>
+<div id="list"></div>
+</div>
+
+<div id="reader">
+<div class="wrap">
+<a href="#" onclick="document.getElementById('reader').style.display='none';return false">← Back</a>
+<img id="rImg" class="cover">
+<h1 id="rTitle" style="color:#fff"></h1>
+<pre id="rBody"></pre>
+</div>
+</div>
+
+<script>
+const stories=[
+{
+t:"Under The Khaki Shadow - 1994 [WITH PHOTO]",
+d:"Military era - Onitsha",
+img:"khaki.jpg",
+body:"CHAPTER 1: THE ANNOUNCEMENT\nIt was August 1994. I was 8 years old. My mother was frying akara in Awada, Onitsha. NEPA had taken light for 3 days.\n\nThe radio announced curfew 7pm to 7am.\n\nThat night we heard boots: Gbakam! Gbakam!\n\nCHAPTER 2: THE NIGHT SOLDIERS CAME\nAt 9pm, Onitsha was dead silent.\n\nAt 9:15pm, soldiers banged our gate: OPEN THIS GATE!\n\nMy mother offered akara. They said 'Put off that lantern. Next time we will not knock.'\n\nUntil 1999, we lived under khaki shadow. One radio for 10 houses. One pot of soup for 3 families."
+},
+{
+t:"The Girl at Nkpor Junction",
+d:"She waved okada every day",
+body:"She waved okada every day but never entered. Waiting for brother since 2019."
+},
+{
+t:"My Hostel Horror - Room 12",
+d:"UNIZIK hostel",
+body:"Room 12 chair moved alone. I shouted Jesus!"
+}
+];
+
+const list=document.getElementById('list');
+stories.forEach(s=>{
+const d=document.createElement('div');
+d.className='card';
+d.innerHTML=`<h3 style="color:#fff">${s.t}</h3><p>${s.d}</p>${s.img?'📷 PHOTO':''}`;
+d.onclick=()=>{
+rTitle.innerText=s.t;
+rBody.innerText=s.body;
+const im=document.getElementById('rImg');
+if(s.img){im.src=s.img;im.style.display='block';}else{im.style.display='none';}
+document.getElementById('reader').style.display='block';
+};
+list.appendChild(d);
+});
+</script>
+
+</body>
+</html>
