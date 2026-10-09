@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Porosity Calculator</title>
-<style>
-body{font-family:Arial;max-width:500px;margin:20px auto;padding:15px;background:#f0f2f5}
-.box{background:white;padding:25px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-h2{text-align:center;color:#0a4a70}
-label{font-weight:bold;display:block;margin-top:12px}
-input{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}
-button{width:100%;padding:12px;background:#0a4a70;color:white;border:none;border-radius:6px;margin-top:15px;font-size:16px;cursor:pointer}
-.result{margin-top:15px;padding:15px;background:#e8f5e9;border-radius:6px;display:none;font-weight:bold;text-align:center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Porosity Calculator</title>
+  <style>
+    body{font-family:Arial;max-width:500px;margin:auto;padding:20px;background:#f0f2f5}
+    .box{background:#fff;padding:25px;border-radius:12px}
+    h2{text-align:center;color:#0a4a70}
+    label{font-weight:bold;display:block;margin-top:12px}
+    input{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}
+    button{width:100%;padding:12px;background:#0a4a70;color:#fff;border:0;border-radius:6px;margin-top:15px}
+    .result{margin-top:15px;padding:15px;background:#e8f5e9;border-radius:6px;display:none;text-align:center;font-weight:bold}
+  </style>
 </head>
 <body>
-<div class="box">
-<h2>Porosity Calculator</h2>
-<label>Pore Volume</label>
-<input type="number" id="pore" placeholder="e.g. 15">
-<label>Bulk Volume</label>
-<input type="number" id="bulk" placeholder="e.g. 100">
-<button onclick="calc()">Calculate Porosity</button>
-<div id="result" class="result"></div>
-</div>
-<script>
-function calc(){
-  var p = parseFloat(document.getElementById('pore').value);
-  var b = parseFloat(document.getElementById('bulk').value);
-  var r = document.getElementById('result');
-  if(isNaN(p) || isNaN(b) || b==0){
-    r.style.display='block';
-    r.innerHTML='Please enter valid numbers';
-    return;
-  }
-  var porosity = (p/b)*100;
-  r.style.display='block';
-  r.innerHTML='Porosity = ' + porosity.toFixed(2) + '%';
-}
-</script>
+  <div class="box">
+    <h2>Porosity Calculator</h2>
+    <label>Pore Volume</label>
+    <input id="pore" type="number" placeholder="e.g 15">
+    <label>Bulk Volume</label>
+    <input id="bulk" type="number" placeholder="e.g 100">
+    <button onclick="c()">Calculate Porosity</button>
+    <div id="r" class="result"></div>
+  </div>
+  <script>
+    function c(){
+      var p=parseFloat(document.getElementById('pore').value),
+      b=parseFloat(document.getElementById('bulk').value),
+      r=document.getElementById('r');
+      if(isNaN(p)||isNaN(b)||b==0){
+        r.style.display='block';
+        r.innerHTML='Please enter valid numbers';return
+      }
+      r.style.display='block';
+      r.innerHTML='Porosity = '+((p/b)*100).toFixed(2)+'%';
+    }
+  </script>
 </body>
 </html>
