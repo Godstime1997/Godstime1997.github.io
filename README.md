@@ -1,40 +1,20 @@
-# 🛢️ Petroleum Engineering Portfolio & Research Hub
+# Godstime Dolor - Student Resource Hub | Petroleum Engineering & NYSC Guide
 
-> Reservoir Engineering | Drilling | Sustainable Energy Solutions
+This website is a resource hub for Nigerian students — built by Godstime Dolor, Petroleum Engineering student.
 
-**Godstime Dolor** | Petroleum Engineering Student | Nigeria 🇳🇬
-🌐 Portfolio: [godstime1997.com.ng](https://godstime1997.com.ng)
-💼 GitHub: @Godstime1997 | 📧 Contact via website
+### What You Will Find Here:
 
----
+**1. NYSC Guide 2026 (Main Section)**
+Complete guide for NYSC 2026 Batch A, B, C — registration, camp requirements, allowance, PPA posting, call-up letter, senate list.
+- Visit: https://godstime1997.github.io/stories.html
 
-### 🎯 About Me
-Passionate Petroleum Engineering student focused on solving real energy challenges in Nigeria and globally. I build tools, write research-based articles, and share sustainable energy solutions.
+**2. Petroleum Engineering Tools**
+Free calculators for students — Porosity Calculator, Drilling Mud, etc.
+- Tool: https://godstime1997.github.io/porosity-calculator.html
 
-### 🛠️ What I Do
-- **Reservoir Engineering** - Porosity, Permeability, PVT Calculations
-- **Drilling Engineering** - Mud Properties, Hydraulics, Well Control
-- **Energy Research** - EOR, Carbon Capture, Sustainable Solutions
-- **Engineering Tools** - Free calculators for students & professionals
+### About Me
+Petroleum Engineering student | I build free tools and write guides to help Nigerian students.
 
-### 📚 Featured Tools & Calculators
-- [ ] Porosity Calculator (Coming Soon)
-- [ ] Drilling Mud Calculator
-- [ ] Oil Formation Volume Factor Tool
-- Check my website for latest tools!
-
-### ✍️ Latest Articles
-I write about Oil & Gas engineering - tutorials, guides, and industry insights.
-👉 Read on [godstime1997.com.ng](https://godstime1997.com.ng)
-
-### 💻 Tech Stack
-`HTML5` `CSS3` `JavaScript` `Reservoir Simulation Concepts` `Python (Learning)`
-
-### 📫 Let's Connect
-- Website: godstime1997.com.ng
-- LinkedIn: [Add your link]
-- Email: Via website contact page
-
----
-⭐ Star this repo if you find it useful!
-MIT Licensed - Free to use for learning.
+Portfolio: https://godstime1997.com.ng
+Contact: via contact.html on this site
+License: MIT
