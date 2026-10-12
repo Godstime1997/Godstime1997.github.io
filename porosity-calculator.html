@@ -27,11 +27,23 @@ button{width:100%;padding:12px;background:#38bdf8;color:#0f172a;border:none;bord
 <div id="paywall" style="text-align:center;padding:60px 20px;min-height:100vh;background:#0f172a;color:white;">
 <h2 style="color:#38bdf8">NDU Porosity Calculator Pro v2</h2>
 <p>Enter Access Code to Unlock</p>
-<input id="codeInput" placeholder="Enter code e.g NDU-123456" style="padding:15px;width:80%;max-width:300px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:white;margin:15px 0">
-<br><br>
-<button onclick="checkCode()" style="background:white;color:black;padding:12px 25px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px">Unlock</button>
-<button onclick="payWithPaystack()" style="background:#38bdf8;color:black;padding:12px 30px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px">Pay ₦1,000 with Paystack</button>
-<p id="msg" style="color:#f87171;margin-top:20px;"></p>
+
+<div style="display:flex;justify-content:center;align-items:center;gap:0;max-width:400px;margin:20px auto;">
+<input id="codeInput" placeholder="Enter code e.g NDU-123456" style="padding:15px;flex:1;border-radius:8px 0 0 8px;border:1px solid #334155;background:#1e293b;color:white;">
+<button onclick="copyInputCode()" style="padding:15px 15px;border-radius:0 8px 8px 0;background:#334155;color:white;border:1px solid #334155;width:auto;">📋</button>
+</div>
+
+<button onclick="checkCode()" style="background:white;color:black;padding:14px 25px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px;width:90%;max-width:400px;">Unlock</button>
+<br>
+<button onclick="payWithPaystack()" style="background:#38bdf8;color:black;padding:14px 30px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:10px 5px;width:90%;max-width:400px;">Pay ₦1,000 with Paystack</button>
+
+<p id="msg" style="margin-top:20px;"></p>
+
+<div style="margin-top:25px;background:#1e293b;padding:12px;border-radius:8px;max-width:400px;margin-left:auto;margin-right:auto;border:1px dashed #38bdf8;">
+<small style="color:#94a3b8;">ADMIN MASTER CODE:</small><br>
+<b id="adminCode" style="color:#38bdf8;">NDU-GODSTIME-ADMIN-99</b>
+<button onclick="copyAdmin()" style="margin-left:10px;background:#0f172a;color:#38bdf8;border:1px solid #38bdf8;padding:5px 10px;border-radius:5px;width:auto;font-size:12px;">Copy</button>
+</div>
 </div>
 
 <div id="calculatorContent" style="display:none;">
@@ -67,16 +79,15 @@ const MASTER_CODE = "NDU-GODSTIME-ADMIN-99";
 
 function checkCode(){
   const code = document.getElementById("codeInput").value.trim().toUpperCase();
-  const msg = document.getElementById("msg");
   if(code === MASTER_CODE || code.startsWith("NDU-")){
     localStorage.setItem("ndu_paid","yes");
     document.getElementById("paywall").style.display="none";
     document.getElementById("calculatorContent").style.display="block";
   } else {
-    msg.innerText="Invalid Code! Pay ₦1,000 to get code";
+    document.getElementById("msg").innerHTML='<span style="color:#f87171;">Invalid Code! Pay ₦1,000 to get code</span>';
   }
 }
-function unlockWithCode(){ checkCode(); }
+
 function payWithPaystack(){
   var handler = PaystackPop.setup({
     key: PAYSTACK_KEY,
@@ -86,13 +97,35 @@ function payWithPaystack(){
     ref: "NDU-"+Math.floor(Math.random()*1000000000),
     callback: function(response){
       let code = response.reference;
-      alert("Payment successful! Your access code: "+code+" \nCopy this code and unlock");
+      navigator.clipboard.writeText(code);
       document.getElementById("codeInput").value = code;
+      document.getElementById("msg").innerHTML = 
+        `<div style="background:#1e293b;padding:15px;border-radius:10px;border:2px solid #38bdf8;">
+          <p style="color:#22c55e;font-weight:bold;">✅ Payment Successful!</p>
+          <p style="color:white;font-size:20px;font-weight:bold;margin:10px 0;">${code}</p>
+          <p style="color:#94a3b8;font-size:12px;">Code copied to clipboard!</p>
+          <button onclick="copyInputCode()" style="background:#38bdf8;color:black;padding:8px 20px;border:none;border-radius:6px;width:auto;margin-top:10px;">📋 Copy Again</button>
+          <br><br>
+          <button onclick="checkCode()" style="background:white;color:black;padding:10px 20px;border:none;border-radius:6px;width:auto;">Unlock Now →</button>
+        </div>`;
     },
-    onClose: function(){ alert("Payment window closed"); }
+    onClose: function(){ document.getElementById("msg").innerHTML='<span style="color:#f87171;">Payment cancelled</span>'; }
   });
   handler.openIframe();
 }
+
+function copyInputCode(){
+  let v = document.getElementById("codeInput").value;
+  if(!v){ alert("No code! Pay first"); return; }
+  navigator.clipboard.writeText(v);
+  alert("Copied: "+v);
+}
+function copyAdmin(){
+  navigator.clipboard.writeText(MASTER_CODE);
+  document.getElementById("codeInput").value = MASTER_CODE;
+  alert("Master Code Copied: "+MASTER_CODE);
+}
+
 window.onload = function(){
   if(localStorage.getItem("ndu_paid")==="yes"){
     document.getElementById("paywall").style.display="none";
@@ -101,4 +134,4 @@ window.onload = function(){
 }
 </script>
 </body>
-  </html>
+                                                                           </html>
