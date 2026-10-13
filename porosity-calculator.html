@@ -10,74 +10,95 @@ body{font-family:Arial;background:#0f172a;color:#fff;margin:0;padding:15px}
 .header{text-align:center;padding:30px;background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:15px;margin-bottom:20px}
 .header h1{margin:0;color:#38bdf8;font-size:26px}
 .badge{background:#38bdf8;color:#0f172a;padding:5px 10px;border-radius:20px;font-weight:bold;display:inline-block;margin-top:10px}
+.details{color:#94a3b8;margin-top:12px;font-size:13px;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr;gap:15px;max-width:700px;margin:20px auto}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr;max-width:1100px}}
 .card{background:#1e293b;padding:20px;border-radius:10px;border:1px solid #334155}
+.card h3{color:#38bdf8;margin-top:0}
+label{font-size:12px;color:#cbd5e1;margin-top:10px;display:block}
+input{width:100%;padding:11px;margin:5px 0 10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;box-sizing:border-box}
+button{width:100%;padding:12px;background:#38bdf8;color:#0f172a;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:5px}
 .result{margin-top:10px;padding:12px;background:#0f172a;border-radius:8px;border:1px dashed #334155;text-align:center;font-weight:bold;color:#a5f3fc}
+.footer{text-align:center;margin-top:40px;padding:20px;color:#64748b;font-size:12px;border-top:1px solid #1e293b}
 </style>
 </head>
 <body>
 
-<div id="paywall" style="text-align:center;padding:50px 20px;min-height:100vh;background:#0f172a;color:white;">
+<div id="paywall" style="text-align:center;padding:60px 20px;min-height:100vh;background:#0f172a;color:white;">
 <h2 style="color:#38bdf8">NDU Porosity Calculator Pro v2</h2>
-<p style="color:#94a3b8;">Pay ₦1,000 to get access code</p>
-
-<div style="display:flex;justify-content:center;align-items:center;gap:0;max-width:400px;margin:20px auto;">
-<input id="codeInput" placeholder="Enter code e.g NDU-123456" style="padding:15px;flex:1;border-radius:8px 0 0 8px;border:1px solid #334155;background:#1e293b;color:white;">
-<button onclick="copyInputCode()" style="padding:15px 15px;border-radius:0 8px 8px 0;background:#334155;color:white;border:1px solid #334155;width:auto;">📋</button>
-</div>
-
-<button onclick="checkCode()" style="background:white;color:black;padding:14px 25px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px;width:90%;max-width:400px;">Unlock</button>
-<br>
-<button onclick="payWithPaystack()" style="background:#38bdf8;color:black;padding:14px 30px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:10px 5px;width:90%;max-width:400px;">Pay ₦1,000 with Paystack</button>
-
-<p id="msg" style="margin-top:20px;"></p>
-<p style="color:#475569;font-size:11px;margin-top:30px;">Secure payment by Paystack • Instant access code</p>
+<p>Enter Access Code to Unlock</p>
+<input id="codeInput" placeholder="Enter code e.g NDU-123456" style="padding:15px;width:80%;max-width:300px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:white;margin:15px 0">
+<br><br>
+<button onclick="checkCode()" style="background:white;color:black;padding:12px 25px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px">Unlock</button>
+<button onclick="payWithPaystack()" style="background:#38bdf8;color:black;padding:12px 30px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px">Pay ₦1,000 with Paystack</button>
+<p id="msg" style="color:#f87171;margin-top:20px;"></p>
 </div>
 
 <div id="calculatorContent" style="display:none;">
-<div class="header"><h1>PETROLEUM ENGINEERING TOOLKIT</h1><div class="badge">DOLOR GODSTIME ONOVUGHA | UG/19/0892</div></div>
-<!-- Your calculators here - same as before -->
-<div style="display:grid;grid-template-columns:1fr;gap:15px;max-width:700px;margin:20px auto">
-<div class="card"><h3 style="color:#38bdf8;">1. Porosity</h3><input id="pv" placeholder="Pore Volume" type="number"><input id="bv" placeholder="Bulk Volume" type="number"><button onclick="calcPor()" style="width:100%;padding:12px;background:#38bdf8;border:none;border-radius:8px;font-weight:bold;margin-top:5px;">Calculate</button><div id="rPor" class="result">-</div></div>
-<div class="card"><h3 style="color:#38bdf8;">2. STOIIP</h3><input id="area" placeholder="Area (acres)" type="number"><input id="h" placeholder="Thickness H (ft)" type="number"><input id="por" placeholder="Porosity fraction" type="number"><input id="sw" placeholder="Sw" type="number"><input id="fvf" placeholder="FVF" type="number"><button onclick="calcSTOIIP()" style="width:100%;padding:12px;background:#38bdf8;border:none;border-radius:8px;font-weight:bold;">Calculate</button><div id="rSTOIIP" class="result">-</div></div>
+<div class="header">
+<h1>PETROLEUM ENGINEERING TOOLKIT</h1>
+<p style="color:#e2e8f0">Built at Niger Delta University - Heart of Nigeria's Oil & Gas</p>
+<div class="badge">DOLOR GODSTIME ONOVUGHA | UG/19/0892</div>
+<div class="details">Department of Petroleum Engineering<br><strong>NIGER DELTA UNIVERSITY</strong><br>Wilberforce Island, Bayelsa State, Nigeria<br>Final Year Project 2026</div>
 </div>
+<div class="grid">
+<div class="card"><h3>1. Porosity</h3><label>Pore Volume</label><input id="pv" type="number"><label>Bulk Volume</label><input id="bv" type="number"><button onclick="calcPor()">Calculate</button><div id="rPor" class="result">-</div></div>
+<div class="card"><h3>2. Permeability (Darcy)</h3><label>q (cc/s)</label><input id="q" type="number"><label>u</label><input id="u" type="number"><label>L</label><input id="L" type="number"><label>A</label><input id="A" type="number"><label>dP</label><input id="dP" type="number"><button onclick="calcPerm()">Calculate</button><div id="rPerm" class="result">-</div></div>
+<div class="card"><h3>3. STOIIP</h3><label>Area (acres)</label><input id="area" type="number"><label>Thickness H (ft)</label><input id="h" type="number"><label>Porosity (fraction)</label><input id="por" type="number"><label>Sw</label><input id="sw" type="number"><label>FVF</label><input id="fvf" type="number"><button onclick="calcSTOIIP()">Calculate</button><div id="rSTOIIP" class="result">-</div></div>
+<div class="card"><h3>4. Formation Volume Factor</h3><label>V (reservoir)</label><input id="vRes" type="number"><label>Vs (stock tank)</label><input id="vSt" type="number"><button onclick="calcFVF()">Calculate</button><div id="rFVF" class="result">-</div></div>
+<div class="card"><h3>5. Oil Saturation</h3><label>Sw</label><input id="sw2" type="number"><button onclick="calcSo()">Calculate</button><div id="rSo" class="result">-</div></div>
+<div class="card"><h3>6. Recovery Factor</h3><label>Np (STO)</label><input id="np" type="number"><label>STOIIP</label><input id="sto" type="number"><button onclick="calcRF()">Calculate</button><div id="rRF" class="result">-</div></div>
+</div>
+<div class="footer"><p><strong>Built by Dolor Godstime Onovugha (UG/19/0892)</strong><br>© 2026 NDU Petroleum Toolkit</p></div>
 </div>
 
 <script>
 function calcPor(){let vp=parseFloat(document.getElementById("pv").value),bv=parseFloat(document.getElementById("bv").value);document.getElementById("rPor").innerText=(vp/bv*100).toFixed(2)+" %"}
+function calcPerm(){let q=parseFloat(document.getElementById("q").value),mu=parseFloat(document.getElementById("u").value),L=parseFloat(document.getElementById("L").value),A=parseFloat(document.getElementById("A").value),dP=parseFloat(document.getElementById("dP").value);document.getElementById("rPerm").innerText=(q*mu*L/(A*dP)).toFixed(4)+" Darcy"}
 function calcSTOIIP(){let Ar=parseFloat(document.getElementById("area").value),h=parseFloat(document.getElementById("h").value),por=parseFloat(document.getElementById("por").value),sw=parseFloat(document.getElementById("sw").value),fvf=parseFloat(document.getElementById("fvf").value);let sto=7758*Ar*h*por*(1-sw)/fvf;document.getElementById("rSTOIIP").innerText=sto.toFixed(2)+" STB"}
+function calcFVF(){let v=parseFloat(document.getElementById("vRes").value),vs=parseFloat(document.getElementById("vSt").value);document.getElementById("rFVF").innerText=(v/vs).toFixed(4)}
+function calcSo(){let sw=parseFloat(document.getElementById("sw2").value);document.getElementById("rSo").innerText=(1-sw).toFixed(4)}
+function calcRF(){let np=parseFloat(document.getElementById("np").value),sto=parseFloat(document.getElementById("sto").value);document.getElementById("rRF").innerText=(np/sto*100).toFixed(2)+" %"}
+</script>
+
+<script>
 const PAYSTACK_KEY = "pk_live_522e90bc4d7ec45abe67ed9b807d7512a0d8ce5b";
 const MASTER_CODE = "NDU-GODSTIME-ADMIN-99";
+
 function checkCode(){
   const code = document.getElementById("codeInput").value.trim().toUpperCase();
+  const msg = document.getElementById("msg");
   if(code === MASTER_CODE || code.startsWith("NDU-")){
     localStorage.setItem("ndu_paid","yes");
     document.getElementById("paywall").style.display="none";
     document.getElementById("calculatorContent").style.display="block";
   } else {
-    document.getElementById("msg").innerHTML='<span style="color:#f87171;">Invalid Code! Pay ₦1,000</span>';
+    msg.innerText="Invalid Code! Pay ₦1,000 to get code";
   }
 }
+function unlockWithCode(){ checkCode(); }
 function payWithPaystack(){
   var handler = PaystackPop.setup({
-    key: PAYSTACK_KEY, email: "customer@ndu.edu.ng", amount: 100000, currency: "NGN",
+    key: PAYSTACK_KEY,
+    email: "customer@ndu.edu.ng",
+    amount: 100000,
+    currency: "NGN",
     ref: "NDU-"+Math.floor(Math.random()*1000000000),
     callback: function(response){
       let code = response.reference;
-      navigator.clipboard.writeText(code);
+      alert("Payment successful! Your access code: "+code+" \nCopy this code and unlock");
       document.getElementById("codeInput").value = code;
-      document.getElementById("msg").innerHTML = `<div style="background:#1e293b;padding:15px;border-radius:10px;border:2px solid #38bdf8;"><p style="color:#22c55e;font-weight:bold;">✅ Payment Successful!</p><p style="color:white;font-size:20px;font-weight:bold;">${code}</p><button onclick="copyInputCode()" style="background:#38bdf8;color:black;padding:8px 20px;border:none;border-radius:6px;width:auto;">📋 Copy Code</button><br><br><button onclick="checkCode()" style="background:white;color:black;padding:10px 20px;border:none;border-radius:6px;width:auto;">Unlock Now →</button></div>`;
     },
-    onClose: function(){ document.getElementById("msg").innerHTML='<span style="color:#f87171;">Payment cancelled</span>'; }
+    onClose: function(){ alert("Payment window closed"); }
   });
   handler.openIframe();
 }
-function copyInputCode(){
-  let v = document.getElementById("codeInput").value;
-  if(!v){ alert("No code yet! Pay first"); return; }
-  navigator.clipboard.writeText(v);
-  alert("Copied: "+v);
+window.onload = function(){
+  if(localStorage.getItem("ndu_paid")==="yes"){
+    document.getElementById("paywall").style.display="none";
+    document.getElementById("calculatorContent").style.display="block";
+  }
 }
-window.onload = function(){ if(localStorage.getItem("ndu_paid")==="yes"){ document.getElementById("paywall").style.display="none"; document.getElementById("calculatorContent").style.display="block"; } }
 </script>
 </body>
-</html>
+                                                                                                                                                                        </html>
