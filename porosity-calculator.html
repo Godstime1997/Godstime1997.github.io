@@ -64,13 +64,14 @@ const SERVICE="service_huylr9i";
 const TEMPLATE="template_ucs1el8";
 function gen(){return "NDU-"+Math.random().toString(36).substr(2,4).toUpperCase()+"-"+Math.random().toString(36).substr(2,4).toUpperCase()}
 function unlockNow(){
-let c=document.getElementById("code").value.trim();
-}else{document.getElementById("msg").innerText="Invalid code! Use NDU-GODSTIME-ADMIN-99";}
-localStorage.setItem("code","paid");
+let c=document.getElementById("code").value.trim().toUpperCase();
+if(c===ADMIN_CODE || (c.startsWith("NDU-") && c.length>=7)){
+localStorage.setItem("code",c);
 localStorage.setItem("is_unlocked","1");
 document.getElementById("lock").style.display="none";
 document.getElementById("suite").style.display="block";
-}else{document.getElementById("msg").innerText="Invalid code! Use NDU-GODSTIME-ADMIN-99";}
+document.getElementById("msg").innerText="Unlocked!";
+}else{document.getElementById("msg").innerText="Invalid code!";}
 }
 function payNow(){
 let em=document.getElementById("email").value.trim();
