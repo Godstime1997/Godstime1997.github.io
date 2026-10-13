@@ -1,1 +1,108 @@
-                                    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Petroleum Calculators (6-in-1) | NDU</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+body{font-family:Arial;background:#0f172a;color:#fff;margin:0;padding:12px;display:flex;flex-direction:column;align-items:center}
+.header{text-align:center;padding:18px;background:#1e293b;border-radius:12px;width:100%;max-width:600px;margin-bottom:12px}
+.card{background:#1e293b;padding:18px;border-radius:12px;border:1px solid #334155;width:100%;max-width:600px;box-sizing:border-box}
+input{width:100%;padding:14px;margin:8px 0;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;box-sizing:border-box}
+button{width:100%;padding:14px;background:#38bdf8;color:#0f172a;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:6px 0}
+.pay{background:#00a583;color:#fff}
+.result{margin-top:10px;padding:12px;background:#0f172a;border-radius:8px;border:1px dashed #38bdf8;text-align:center;font-weight:bold}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.tab{flex:1 1 24%;padding:10px;font-size:11px;background:#334155;color:#94a3b8;border-radius:8px;text-align:center;cursor:pointer}
+.tab.active{background:#38bdf8;color:#0f172a;font-weight:bold}
+.calc{display:none}
+.calc.active{display:block}
+#suite{display:none}
+#lock{display:block}
+</style>
+</head>
+<body>
+<div class="header">
+<h1 style="margin:0;font-size:20px">PETROLEUM CALCULATORS (6-in-1)</h1>
+<p style="color:#94a3b8;font-size:11px">Built at Niger Delta University</p>
+<span style="background:#38bdf8;color:#0f172a;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:bold">DOLOR GODSTIME ONOVUGHA | UG/19/0892</span>
+</div>
+<div id="lock" class="card">
+<h3 style="color:#38bdf8;text-align:center">🔓 Unlock 6 Calculators - ₦1000</h3>
+<input id="email" type="email" placeholder="yourname@gmail.com">
+<button class="pay" onclick="payNow()">💳 Pay ₦1000 & Get Access Code</button>
+<p style="text-align:center;color:#64748b;font-size:13px;margin:12px 0">- OR ENTER CODE -</p>
+<input id="code" placeholder="Enter your access code">
+<button onclick="unlockNow()">Unlock with Code</button>
+<p id="msg" style="text-align:center;color:#f87171;font-size:13px;min-height:18px"></p>
+<p style="font-size:10px;color:#334155;text-align:center;margin-top:10px">Need help? WhatsApp admin</p>
+</div>
+<div id="suite" class="card">
+<div class="tabs">
+<div class="tab active" onclick="showTab(0)">1. Porosity</div>
+<div class="tab" onclick="showTab(1)">2. Perm</div>
+<div class="tab" onclick="showTab(2)">3. FVF</div>
+<div class="tab" onclick="showTab(3)">4. Sw</div>
+<div class="tab" onclick="showTab(4)">5. OOIP</div>
+<div class="tab" onclick="showTab(5)">6. RF</div>
+</div>
+<div class="calc active" id="c0"><h4 style="color:#38bdf8">1. Porosity φ = Vp/Vb*100</h4><input id="vp" type="number" placeholder="Pore Volume Vp"><input id="vb" type="number" placeholder="Bulk Volume Vb"><button onclick="calcP()">Calculate</button><div class="result" id="r0"></div></div>
+<div class="calc" id="c1"><h4 style="color:#38bdf8">2. Permeability</h4><input id="q" type="number" placeholder="Q"><input id="u" type="number" placeholder="μ"><input id="l" type="number" placeholder="L"><input id="a" type="number" placeholder="Area"><input id="dp" type="number" placeholder="dP"><button onclick="calcK()">Calculate</button><div class="result" id="r1"></div></div>
+<div class="calc" id="c2"><h4 style="color:#38bdf8">3. FVF</h4><input id="vr" type="number" placeholder="Vr"><input id="vs" type="number" placeholder="Vs"><button onclick="calcF()">Calculate</button><div class="result" id="r2"></div></div>
+<div class="calc" id="c3"><h4 style="color:#38bdf8">4. Sw</h4><input id="vw" type="number" placeholder="Vw"><input id="vp2" type="number" placeholder="Vp"><button onclick="calcS()">Calculate</button><div class="result" id="r3"></div></div>
+<div class="calc" id="c4"><h4 style="color:#38bdf8">5. OOIP</h4><input id="area" type="number" placeholder="Area acres"><input id="h" type="number" placeholder="h ft"><input id="phi" type="number" placeholder="φ"><input id="soi" type="number" placeholder="Soi"><input id="boi" type="number" placeholder="Boi"><button onclick="calcO()">Calculate</button><div class="result" id="r4"></div></div>
+<div class="calc" id="c5"><h4 style="color:#38bdf8">6. RF</h4><input id="np" type="number" placeholder="Np"><input id="n" type="number" placeholder="N"><button onclick="calcR()">Calculate</button><div class="result" id="r5"></div></div>
+<button style="background:#334155;color:#fff;margin-top:15px" onclick="logout()">🔒 Lock</button>
+</div>
+<script>
+emailjs.init("AY9jElFndPRBSpQ2J");
+const PAYSTACK_KEY="pk_live_522e0d7b4cc0fe64c5abe67ed6b07d5fa12a0c5eb5";
+const ADMIN_CODE="NDU-GODSTIME-ADMIN-99";
+const SERVICE="service_huylr9i";
+const TEMPLATE="template_ucs1el8";
+function gen(){return "NDU-"+Math.random().toString(36).substr(2,4).toUpperCase()+"-"+Math.random().toString(36).substr(2,4).toUpperCase()}
+function unlockNow(){
+let c=document.getElementById("code").value.trim();
+if(c===ADMIN_CODE || (c.startsWith("NDU-") && c.length>=11)){
+localStorage.setItem("code","paid");
+localStorage.setItem("is_unlocked","1");
+document.getElementById("lock").style.display="none";
+document.getElementById("suite").style.display="block";
+}else{document.getElementById("msg").innerText="Invalid code! Use NDU-GODSTIME-ADMIN-99";}
+}
+function payNow(){
+let em=document.getElementById("email").value.trim();
+if(!em.includes("@")){document.getElementById("msg").innerText="Enter valid Gmail first";return;}
+document.getElementById("msg").innerText="Opening Paystack...";
+let handler=PaystackPop.setup({
+key:PAYSTACK_KEY,
+email:em,
+amount:100000,
+currency:"NGN",
+callback:function(r){
+let cr=gen();
+localStorage.setItem("code","paid");
+localStorage.setItem("is_unlocked","1");
+emailjs.send(SERVICE,TEMPLATE,{to_email:em,access_code:cr});
+document.getElementById("lock").style.display="none";
+document.getElementById("suite").style.display="block";
+alert("Code sent to "+em+": "+cr);
+},
+onClose:function(){document.getElementById("msg").innerText="Payment closed";}
+});
+handler.openIframe();
+}
+function showTab(n){document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",i===n));document.querySelectorAll(".calc").forEach((c,i)=>c.classList.toggle("active",i===n));}
+function calcP(){let vp=parseFloat(document.getElementById("vp").value);let vb=parseFloat(document.getElementById("vb").value);if(vp&&vb)document.getElementById("r0").innerText=(vp/vb*100).toFixed(2)+"%";}
+function calcK(){let q=parseFloat(document.getElementById("q").value);let u=parseFloat(document.getElementById("u").value);let l=parseFloat(document.getElementById("l").value);let a=parseFloat(document.getElementById("a").value);let dp=parseFloat(document.getElementById("dp").value);if(q&&u&&l&&a&&dp)document.getElementById("r1").innerText=((q*u*l)/(a*dp)).toFixed(2)+" mD";}
+function calcF(){let vr=parseFloat(document.getElementById("vr").value);let vs=parseFloat(document.getElementById("vs").value);if(vr&&vs)document.getElementById("r2").innerText=(vr/vs).toFixed(3);}
+function calcS(){let vw=parseFloat(document.getElementById("vw").value);let vp=parseFloat(document.getElementById("vp2").value);if(vw&&vp)document.getElementById("r3").innerText=(vw/vp*100).toFixed(2)+"%";}
+function calcO(){let area=parseFloat(document.getElementById("area").value);let h=parseFloat(document.getElementById("h").value);let phi=parseFloat(document.getElementById("phi").value);let soi=parseFloat(document.getElementById("soi").value);let boi=parseFloat(document.getElementById("boi").value);if(area&&h&&phi&&soi&&boi)document.getElementById("r4").innerText=(7758*area*h*phi*soi/boi).toFixed(2)+" STB";}
+function calcR(){let np=parseFloat(document.getElementById("np").value);let n=parseFloat(document.getElementById("n").value);if(np&&n)document.getElementById("r5").innerText=(np/n*100).toFixed(2)+"%";}
+function logout(){localStorage.clear();document.getElementById("suite").style.display="none";document.getElementById("lock").style.display="block";}
+window.onload=function(){if(localStorage.getItem("is_unlocked")==="1"){document.getElementById("lock").style.display="none";document.getElementById("suite").style.display="block";}};
+</script>
+</body>
+  </html>
