@@ -27,7 +27,10 @@ button{width:100%;padding:12px;background:#38bdf8;color:#0f172a;border:none;bord
 <div id="paywall" style="text-align:center;padding:60px 20px;min-height:100vh;background:#0f172a;color:white;">
 <h2 style="color:#38bdf8">NDU Porosity Calculator Pro v2</h2>
 <p>Enter Access Code to Unlock</p>
-<input id="codeInput" placeholder="Enter code e.g NDU-123456" style="padding:15px;width:80%;max-width:300px;border-radius:8px;border:1px solid #334155;background:#1e293b;color:white;margin:15px 0">
+  <div style="display:flex;justify-content:center;align-items:center;gap:0;max-width:350px;margin:15px auto;">
+<input id="codeInput" placeholder="Enter code e.g NDU-123456" style="flex:1;padding:15px;border-radius:8px 0 0 8px;border:1px solid #334155;background:#1e293b;color:white;">
+<button onclick="copyInputCode()" style="padding:15px 12px;border-radius:0 8px 8px 0;background:#334155;color:white;border:1px solid #334155;width:auto;cursor:pointer;">📋</button>
+  </div>
 <br><br>
 <button onclick="checkCode()" style="background:white;color:black;padding:12px 25px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px">Unlock</button>
 <button onclick="payWithPaystack()" style="background:#38bdf8;color:black;padding:12px 30px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;margin:5px">Pay ₦1,000 with Paystack</button>
@@ -76,7 +79,13 @@ function checkCode(){
     msg.innerText="Invalid Code! Pay ₦1,000 to get code";
   }
 }
-function unlockWithCode(){ checkCode(); }
+function copyInputCode(){
+  let v = document.getElementById("codeInput").value.trim();
+  if(!v){ alert("No code yet, pay first"); return; }
+  navigator.clipboard.writeText(v);
+  alert("Copied: "+v);
+}
+  function unlockWithCode(){ checkCode(); }
 function payWithPaystack(){
   var handler = PaystackPop.setup({
     key: PAYSTACK_KEY,
@@ -86,8 +95,10 @@ function payWithPaystack(){
     ref: "NDU-"+Math.floor(Math.random()*1000000000),
     callback: function(response){
       let code = response.reference;
-      alert("Payment successful! Your access code: "+code+" \nCopy this code and unlock");
-      document.getElementById("codeInput").value = code;
+           document.getElementById("codeInput").value = code;
+      document.getElementById("msg").innerHTML = '<div style="background:#0f172a;padding:12px;border-radius:10px;border:2px solid #38bdf8;"><p style="color:#22c55e;font-weight:bold;margin:0;">✅ Payment Successful!</p><p style="color:white;font-size:18px;font-weight:bold;margin:8px 0;word-break:break-all;">'+code+'</p><button onclick="copyInputCode()" type="button" style="background:#38bdf8;color:#0f172a;padding:8px 12px;border:none;border-radius:6px;width:auto;font-weight:bold;margin:3px;cursor:pointer;">📋 Copy</button> <button onclick="checkCode()" type="button" style="background:white;color:black;padding:8px 12px;border:none;border-radius:6px;width:auto;font-weight:bold;margin:3px;cursor:pointer;">Unlock →</button></div>';
+      navigator.clipboard.writeText(code); 
+      
     },
     onClose: function(){ alert("Payment window closed"); }
   });
