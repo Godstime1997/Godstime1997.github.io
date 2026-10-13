@@ -3,57 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1439876525955206" crossorigin="anonymous"></script>
-<title>Godstime Hub - NYSC + Petroleum Toolkit</title>
+<title>Godstime WSC + Petroleum Toolkit</title>
 <script src="https://js.paystack.co/v1/inline.js"></script>
-<style>body{margin:0;font-family:Arial;background:#f8f9fa}.top{background:#0f172a;padding:12px;text-align:center;position:sticky;top:0;z-index:999}.top a{color:white;text-decoration:none;padding:10px 16px;margin:4px;background:#1e293b;border-radius:20px;display:inline-block;font-weight:bold;font-size:13px}.card{background:white;padding:15px;border-radius:10px;margin-bottom:12px;border-left:4px solid #0d6e3f}.pet{background:#1e293b;padding:15px;border-radius:10px;margin-bottom:12px;color:white}</style>
+<style>
+body{margin:0;font-family:Arial;background:#f8f9fa;}
+.top{position:sticky;top:0;z-index:100;background:#0f172a;padding:12px;text-align:center;display:flex;justify-content:center;gap:10px;}
+.top a{color:white;text-decoration:none;background:#1e293b;padding:8px 14px;border-radius:20px;font-size:14px;}
+#lockScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0f172a,#001a12);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;}
+.lockBox{background:white;padding:25px;border-radius:16px;max-width:360px;width:100%;text-align:center;}
+.codeDisplay{background:#f0fdf4;border:2px dashed #16a34a;padding:15px;font-size:22px;font-weight:bold;letter-spacing:2px;margin:15px 0;border-radius:10px;color:#0f172a;}
+.nysc-card{display:block;background:white;margin:10px;padding:15px;border-radius:10px;text-decoration:none;color:#0a3d2e;font-weight:bold;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+</style>
 </head>
 <body>
+
+<!-- LOCK - Covers everything until payment -->
+<div id="lockScreen">
+  <div class="lockBox" id="lockInner">
+    <h2 style="margin:0;color:#0f172a;">🔒 Content Locked</h2>
+    <p style="color:#666;font-size:14px;">Pay first to get your personal access code.<br>Developer Master: GODSTIME-MASTER-2026</p>
+    <input id="codeInput" placeholder="Enter code e.g NDU-XXXX" style="padding:12px;width:100%;box-sizing:border-box;border:1px solid #ccc;border-radius:8px;margin:10px 0;">
+    <button onclick="unlockNow()" style="padding:12px;width:100%;background:#16a34a;color:white;border:none;border-radius:8px;font-weight:bold;cursor:pointer;">Unlock Content</button>
+    <div style="margin:15px 0;border-top:1px solid #eee;padding-top:15px;">
+      <button onclick="payNow(70000,'NYSC')" style="padding:12px;width:100%;background:#0f172a;color:white;border:none;border-radius:8px;margin:5px 0;">Pay ₦700 for NYSC Code</button>
+      <button onclick="payNow(100000,'TOOLKIT')" style="padding:12px;width:100%;background:#eab308;color:#000;border:none;border-radius:8px;margin:5px 0;font-weight:bold;">Pay ₦1,000 for Toolkit Code</button>
+    </div>
+    <p id="msg" style="color:red;font-size:13px;"></p>
+  </div>
+</div>
+
 <div class="top">
-<a href="#" onclick="document.getElementById('nysc').style.display='block';document.getElementById('petSec').style.display='none';return false">📚 NYSC GUIDE</a>
-<a href="#" onclick="document.getElementById('nysc').style.display='none';document.getElementById('petSec').style.display='block';return false" style="background:#38bdf8;color:#0f172a">🛢️ PETROLEUM TOOLKIT</a>
+  <a href="#" onclick="showSection('nysc')">NYSC Guide</a>
+  <a href="#" onclick="showSection('petSec')">Petroleum Toolkit Pro</a>
 </div>
 
-<div id="nysc" style="display:block">
-<div style="background:#0d6e3f;color:white;padding:25px;text-align:center"><h1 style="margin:0">NYSC Guide 2026</h1><p>Senate List | Allowance N77k | Camp Guide</p></div>
-<div style="max-width:800px;margin:15px auto;padding:0 15px">
-<div class="card"><a href="history-of-nysc-in-nigeria.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">History of NYSC in Nigeria</a></div>
-<div class="card"><a href="nysc-senate-list-2026.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">NYSC Senate List 2026</a></div>
-<div class="card"><a href="nysc-registration-guide-2026.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">NYSC Registration Guide 2026</a></div>
-<div class="card"><a href="nysc-allowance-2026-how-much.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">NYSC Allowance N77k</a></div>
-<div class="card"><a href="nysc-camp-requirements-what-to-take-2026.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">NYSC Camp Requirements</a></div>
-<div class="card"><a href="nysc-call-up-letter-2026-how-to-print.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">NYSC Call-Up Letter</a></div>
-<div class="card"><a href="nysc-ppa-posting-2026-how-to-check.html" style="color:#0d6e3f;font-weight:bold;text-decoration:none">NYSC PPA Posting 2026</a></div>
-<div style="text-align:center;padding:18px;background:#e8fff3;border:2px solid #0AA07B;border-radius:12px;margin:15px 0"><a href="https://paystack.shop/pay/nysc-diary-700" style="background:#0AA07B;color:white;padding:12px 25px;text-decoration:none;border-radius:8px;font-weight:bold">💰 Support ₦700</a></div>
-</div>
+<div id="nysc" style="display:block;padding:25px;text-align:center;">
+  <h2>NYSC Guide 2026</h2>
+  <a class="nysc-card" href="nysc-history-of-nysc-in-nigeria.html">📘 History of NYSC</a>
+  <a class="nysc-card" href="nysc-senate-list-2026.html">📋 Senate List 2026</a>
+  <a class="nysc-card" href="nysc-registration-guide-2026.html">📝 Registration Guide</a>
+  <a class="nysc-card" href="nysc-camp-requirements-what-to-take-2026.html">🎒 Camp Requirements</a>
 </div>
 
-<div id="petSec" style="display:none;background:#0f172a;min-height:100vh;padding:20px;color:white;text-align:center">
-<h2 style="color:#38bdf8">NDU Petroleum Toolkit Pro</h2>
-<p style="color:#94a3b8">Pay ₦1,000 to unlock all 6 calculators</p>
-<div style="max-width:400px;margin:15px auto;display:flex"><input id="codeInput" placeholder="Enter code e.g NDU-..." style="flex:1;padding:12px;border-radius:8px 0 0 8px;border:1px solid #333;background:#1e293b;color:white"><button onclick="navigator.clipboard.writeText(document.getElementById('codeInput').value);alert('Copied: '+document.getElementById('codeInput').value)" style="padding:12px;border-radius:0 8px 8px 0;background:#334155;color:white;border:none">📋</button></div>
-<button onclick="checkCode()" style="padding:12px 20px;width:90%;max-width:400px;background:white;color:black;border:none;border-radius:8px;font-weight:bold;margin:5px">Unlock Calculators</button><br>
-<button onclick="payWithPaystack()" style="padding:12px 20px;width:90%;max-width:400px;background:#38bdf8;color:#0f172a;border:none;border-radius:8px;font-weight:bold;margin:10px">Pay ₦1,000 with Paystack</button>
-<div id="msg" style="margin-top:15px;max-width:400px;margin-left:auto;margin-right:auto"></div>
-
-<div id="calc" style="display:none;text-align:left;max-width:1000px;margin:20px auto">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-<div class="pet"><h4 style="color:#38bdf8;margin:0 0 8px">1. Porosity %</h4><input id="pv" type="number" placeholder="Pore Vol" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="bv" type="number" placeholder="Bulk Vol" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><button onclick="document.getElementById('rPor').innerText=(document.getElementById('pv').value/document.getElementById('bv').value*100).toFixed(2)+' %'" style="width:100%;padding:8px;background:#38bdf8;border:none;border-radius:5px;font-weight:bold;margin-top:5px">Calculate</button><div id="rPor" style="margin-top:6px;color:#a5f3fc">-</div></div>
-<div class="pet"><h4 style="color:#38bdf8;margin:0 0 8px">2. Permeability</h4><input id="q" type="number" placeholder="q" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="u" type="number" placeholder="μ" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="L" type="number" placeholder="L" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="A" type="number" placeholder="A" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="dP" type="number" placeholder="dP" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><button onclick="let q=document.getElementById('q').value,u=document.getElementById('u').value,L=document.getElementById('L').value,A=document.getElementById('A').value,dP=document.getElementById('dP').value;document.getElementById('rPerm').innerText=(q*u*L/(A*dP)).toFixed(4)+' Darcy'" style="width:100%;padding:8px;background:#38bdf8;border:none;border-radius:5px;font-weight:bold;margin-top:5px">Calculate</button><div id="rPerm" style="margin-top:6px;color:#a5f3fc">-</div></div>
-<div class="pet"><h4 style="color:#38bdf8;margin:0 0 8px">3. STOIIP</h4><input id="area" type="number" placeholder="Area acres" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="h" type="number" placeholder="H ft" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="por" type="number" step="0.01" placeholder="Por 0.25" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="sw" type="number" step="0.01" placeholder="Sw 0.3" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="fvf" type="number" step="0.01" placeholder="FVF Bo" style="width:100%;padding:6px;margin:2px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><button onclick="let Ar=document.getElementById('area').value,h=document.getElementById('h').value,por=document.getElementById('por').value,sw=document.getElementById('sw').value,fvf=document.getElementById('fvf').value;document.getElementById('rSTOIIP').innerText=(7758*Ar*h*por*(1-sw)/fvf).toLocaleString()+' STB'" style="width:100%;padding:8px;background:#38bdf8;border:none;border-radius:5px;font-weight:bold;margin-top:5px">Calculate</button><div id="rSTOIIP" style="margin-top:6px;color:#a5f3fc">-</div></div>
-<div class="pet"><h4 style="color:#38bdf8;margin:0 0 8px">4. FVF</h4><input id="vRes" type="number" placeholder="V res" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="vSt" type="number" placeholder="V stock" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><button onclick="document.getElementById('rFVF').innerText=(document.getElementById('vRes').value/document.getElementById('vSt').value).toFixed(4)" style="width:100%;padding:8px;background:#38bdf8;border:none;border-radius:5px;font-weight:bold;margin-top:5px">Calculate</button><div id="rFVF" style="margin-top:6px;color:#a5f3fc">-</div></div>
-<div class="pet"><h4 style="color:#38bdf8;margin:0 0 8px">5. Oil Saturation So</h4><input id="sw2" type="number" step="0.01" placeholder="Sw e.g 0.3" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><button onclick="document.getElementById('rSo').innerText=(1-document.getElementById('sw2').value).toFixed(4)" style="width:100%;padding:8px;background:#38bdf8;border:none;border-radius:5px;font-weight:bold;margin-top:5px">Calculate So = 1 - Sw</button><div id="rSo" style="margin-top:6px;color:#a5f3fc">-</div></div>
-<div class="pet"><h4 style="color:#38bdf8;margin:0 0 8px">6. Recovery Factor</h4><input id="np" type="number" placeholder="Np Produced" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><input id="sto" type="number" placeholder="STOIIP" style="width:100%;padding:8px;margin:3px 0;background:#0f172a;color:white;border:1px solid #334155;border-radius:5px;box-sizing:border-box"><button onclick="document.getElementById('rRF').innerText=(document.getElementById('np').value/document.getElementById('sto').value*100).toFixed(2)+' %'" style="width:100%;padding:8px;background:#38bdf8;border:none;border-radius:5px;font-weight:bold;margin-top:5px">Calculate RF</button><div id="rRF" style="margin-top:6px;color:#a5f3fc">-</div></div>
-</div>
-<div style="text-align:center;margin-top:20px;color:#64748b;font-size:11px">Built by Dolor Godstime Onovugha UG/19/0892 | NDU Petroleum Engineering 2026</div>
-</div>
+<div id="petSec" style="display:none;background:#01172a;min-height:100vh;padding:20px;color:white;text-align:center;">
+  <h2 style="color:#3bd8ff;">NDU Petroleum Toolkit Pro</h2>
+  <p style="color:#94a3b8;">Porosity Calculator Inside</p>
+  <div id="calc" style="display:block;text-align:left;max-width:400px;margin:20px auto;background:#0a2a4a;padding:20px;border-radius:12px;">
+    <input id="pv" type="number" placeholder="Pore Volume" style="width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none;">
+    <input id="bv" type="number" placeholder="Bulk Volume" style="width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none;">
+    <button onclick="calcPor()" style="padding:10px 20px;width:100%;background:#3bd8ff;border:none;border-radius:5px;">Calculate Porosity</button>
+    <p id="porRes" style="font-weight:bold;"></p>
+  </div>
 </div>
 
 <script>
-const PAYSTACK_KEY="pk_live_522e90bc4d7ec45abe67ed9b807d7512a0d8ce5b";
-function checkCode(){let c=document.getElementById('codeInput').value.trim().toUpperCase();if(c.startsWith('NDU-')){localStorage.setItem('ndu_paid','yes');document.getElementById('calc').style.display='block';document.getElementById('msg').innerHTML='<span style=color:#22c55e>✅ Unlocked! All 6 calculators ready</span>';window.scrollTo(0,400);}else{document.getElementById('msg').innerHTML='<span style=color:#f87171>❌ Invalid code! Pay first</span>';}}
-function payWithPaystack(){var h=PaystackPop.setup({key:PAYSTACK_KEY,email:"customer@ndu.edu.ng",amount:100000,currency:"NGN",ref:"NDU-"+Math.floor(Math.random()*1000000000),callback:function(r){let code=r.reference;document.getElementById('codeInput').value=code;navigator.clipboard.writeText(code).catch(()=>{});document.getElementById('msg').innerHTML='<div style=background:#1e293b;padding:14px;border-radius:10px;border:2px solid #38bdf8;text-align:center><p style=color:#22c55e;font-weight:bold;margin:0>✅ Payment Successful!</p><p style=color:white;font-size:20px;font-weight:bold;margin:8px 0;word-break:break-all>'+code+'</p><p style=color:#94a3b8;font-size:11px>Code copied! Click Unlock</p><button onclick=checkCode() style=background:white;color:black;padding:8px 18px;border:none;border-radius:6px;font-weight:bold;margin-top:8px>Unlock Now →</button> <button onclick=navigator.clipboard.writeText(document.getElementById(`codeInput`).value);alert(`Copied`) style=background:#38bdf8;color:#0f172a;padding:8px 18px;border:none;border-radius:6px;font-weight:bold>📋 Copy</button></div>';},onClose:function(){document.getElementById('msg').innerHTML='<span style=color:#fbbf24>Payment window closed</span>';}});h.openIframe();}
-window.onload=function(){if(localStorage.getItem('ndu_paid')==='yes'){document.getElementById('calc').style.display='block';}}
+const PAYSTACK_KEY="pk_live_522e60bcd74c45e2be7a60b7512a60b5c3e5b";
+const MASTER_CODE="GODSTIME-MASTER-2026";
+const MASTER_CODE2="GODSTIME1997";
+
+function generateCode(type){
+  const r1=Math.random().toString(36).substring(2,6).toUpperCase();
+  const r2=Math.random().toString(36).substring(2,6).toUpperCase();
+  return `NDU-${type}-${r1}${r2}`;
+}
+function showSection(id){
+  if(localStorage.getItem('ndu_unlocked')!=='yes'){ document.getElementById('lockScreen').style.display='flex'; return; }
+  document.getElementById('nysc').style.display = id==='nysc' ? 'block':'none';
+  document.getElementById('petSec').style.display = id==='petSec' ? 'block':'none';
+}
+function unlockNow(){
+  let c=document.getElementById('codeInput').value.trim().toUpperCase();
+  const saved=JSON.parse(localStorage.getItem('validNDUCodes')||'[]');
+  if(c===MASTER_CODE || c===MASTER_CODE2 || saved.includes(c)){
+    localStorage.setItem('ndu_unlocked','yes');
+    document.getElementById('lockScreen').style.display='none';
+  }else{
+    document.getElementById('msg').innerText="❌ Invalid code. Pay to get code.";
+  }
+}
+function payNow(amount,type){
+  var handler=PaystackPop.setup({
+    key:PAYSTACK_KEY, email:"customer@ndu.edu.ng", amount:amount, currency:"NGN",
+    callback:function(response){
+      const newCode=generateCode(type);
+      const saved=JSON.parse(localStorage.getItem('validNDUCodes')||'[]');
+      saved.push(newCode);
+      localStorage.setItem('validNDUCodes',JSON.stringify(saved));
+      localStorage.setItem('ndu_unlocked','yes');
+      document.getElementById('lockInner').innerHTML=`
+        <h2 style="color:green;">✅ Payment Successful!</h2>
+        <p>Your Personal Code for ${type}:</p>
+        <div class="codeDisplay">${newCode}</div>
+        <button onclick="navigator.clipboard.writeText('${newCode}')" style="padding:10px 20px;background:#eee;border:1px solid #ccc;border-radius:5px;">📋 Copy Code</button>
+        <br><br>
+        <button onclick="location.reload()" style="padding:12px 25px;background:#16a34a;color:white;border:none;border-radius:8px;font-weight:bold;width:100%;">Unlock Now →</button>
+        <p style="font-size:11px;color:red;margin-top:10px;">⚠️ COPY AM! You need this code next time.</p>
+      `;
+    },
+    onClose:function(){ document.getElementById('msg').innerText="Payment cancelled"; }
+  });
+  handler.openIframe();
+}
+window.onload=function(){
+  if(localStorage.getItem('ndu_unlocked')==='yes'){
+    document.getElementById('lockScreen').style.display='none';
+  }
+};
+function calcPor(){
+  let pv=parseFloat(document.getElementById('pv').value);
+  let bv=parseFloat(document.getElementById('bv').value);
+  if(!pv||!bv){document.getElementById('porRes').innerText="Enter both values";return;}
+  let res=(pv/bv)*100;
+  document.getElementById('porRes').innerText="Porosity = "+res.toFixed(2)+" %";
+}
 </script>
 </body>
-</html>
+  </html>
