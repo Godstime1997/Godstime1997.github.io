@@ -65,7 +65,7 @@ const TEMPLATE="template_ucs1el8";
 function gen(){return "NDU-"+Math.random().toString(36).substr(2,4).toUpperCase()+"-"+Math.random().toString(36).substr(2,4).toUpperCase()}
 function unlockNow(){
 let c=document.getElementById("code").value.trim();
-if(c===ADMIN_CODE || (c.startsWith("NDU-") && c.length>=11)){
+}else{document.getElementById("msg").innerText="Invalid code! Use NDU-GODSTIME-ADMIN-99";}
 localStorage.setItem("code","paid");
 localStorage.setItem("is_unlocked","1");
 document.getElementById("lock").style.display="none";
