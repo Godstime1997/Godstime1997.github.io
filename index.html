@@ -1,33 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petroleum Engineering Toolkit | NDU Final Year Project</title>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+body{font-family:Arial;background:#0f172a;color:#fff;margin:0;padding:15px}
+.header{text-align:center;padding:30px;background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:15px;margin-bottom:20px}
+.header h1{margin:0;color:#38bdf8;font-size:26px}
+.badge{background:#38bdf8;color:#0f172a;padding:5px 10px;border-radius:20px;font-weight:bold;display:inline-block;margin-top:10px}
+.details{color:#94a3b8;margin-top:12px;font-size:13px;line-height:1.6}
+.grid{display:grid;grid-template-columns:1fr;gap:15px;max-width:700px;margin:20px auto}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr;max-width:1100px}}
+.card{background:#1e293b;padding:20px;border-radius:10px;border:1px solid #334155}
+.card h3{color:#38bdf8;margin-top:0}
+label{font-size:12px;color:#cbd5e1;margin-top:10px;display:block}
+input{width:100%;padding:11px;margin:5px 0 10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff;box-sizing:border-box}
+button{width:100%;padding:12px;background:#38bdf8;color:#0f172a;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:5px}
+.result{margin-top:10px;padding:12px;background:#0f172a;border-radius:8px;border:1px dashed #334155;text-align:center;font-weight:bold;color:#a5f3fc}
+.footer{text-align:center;margin-top:40px;padding:20px;color:#64748b;font-size:12px;border-top:1px solid #1e293b}
+</style>
+</head>
+<body>
+
+<div id="paywall" style="text-align:center;padding:40px 15px;min-height:100vh;background:#0f172a;color:white;">
+<h2 style="color:#38bdf8;margin-bottom:5px">NDU Petroleum Toolkit Pro v2</h2>
+<p style="color:#94a3b8;font-size:14px">Secure Access • Pay ₦1,000 once, use forever</p>
+<input id="buyerEmail" type="email" placeholder="Enter Gmail to receive code (e.g yourname@gmail.com)" style="max-width:400px;margin:15px auto;display:block;padding:14px;border-radius:8px;border:1px solid #38bdf8;background:#1e293b;color:white;">
+<div style="display:flex;justify-content:center;align-items:center;gap:0;max-width:400px;margin:10px auto;">
+<input id="codeInput" placeholder="Enter access code e.g NDU-123456789" style="padding:14px;flex:1;border-radius:8px 0 0 8px;border:1px solid #334155;background:#1e293b;color:white;">
+<button onclick="copyInputCode()" style="padding:14px 14px;border-radius:0 8px 8px 0;background:#334155;color:white;border:1px solid #334155;width:auto;">📋</button>
+</div>
+<button onclick="checkCode()" style="background:white;color:black;padding:12px 25px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px;width:90%;max-width:400px">Unlock Calculator</button>
+<br>
+<button onclick="payWithPaystack()" style="background:#38bdf8;color:#0f172a;padding:12px 25px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:10px 5px;width:90%;max-width:400px">Pay ₦1,000 with Paystack</button>
+<div id="msg" style="margin-top:20px;max-width:420px;margin-left:auto;margin-right:auto"></div>
+<p style="color:#475569;font-size:11px;margin-top:30px">🔒 Secure payment by Paystack • UG/19/0892</p>
+</div>
+
+<div id="calculatorContent" style="display:none;">
+<div class="header">
+<h1>PETROLEUM ENGINEERING TOOLKIT</h1>
+<p style="color:#e2e8f0">Built at Niger Delta University - Heart of Nigeria's Oil & Gas</p>
+<div class="badge">DOLOR GODSTIME ONOVUGHA | UG/19/0892</div>
+<div class="details">Department of Petroleum Engineering<br><strong>NIGER DELTA UNIVERSITY</strong><br>Wilberforce Island, Bayelsa State, Nigeria<br>Final Year Project 2026</div>
+</div>
+<div class="grid">
+<div class="card"><h3>1. Porosity</h3><label>Pore Volume</label><input id="pv" type="number"><label>Bulk Volume</label><input id="bv" type="number"><button onclick="calcPor()">Calculate</button><div id="rPor" class="result">-</div></div>
+<div class="card"><h3>2. Permeability (Darcy)</h3><label>q (cc/s)</label><input id="q" type="number"><label>u</label><input id="u" type="number"><label>L</label><input id="L" type="number"><label>A</label><input id="A" type="number"><label>dP</label><input id="dP" type="number"><button onclick="calcPerm()">Calculate</button><div id="rPerm" class="result">-</div></div>
+<div class="card"><h3>3. STOIIP</h3><label>Area (acres)</label><input id="area" type="number"><label>Thickness H (ft)</label><input id="h" type="number"><label>Porosity (fraction)</label><input id="por" type="number"><label>Sw</label><input id="sw" type="number"><label>FVF</label><input id="fvf" type="number"><button onclick="calcSTOIIP()">Calculate</button><div id="rSTOIIP" class="result">-</div></div>
+<div class="card"><h3>4. Formation Volume Factor</h3><label>V (reservoir)</label><input id="vRes" type="number"><label>Vs (stock tank)</label><input id="vSt" type="number"><button onclick="calcFVF()">Calculate</button><div id="rFVF" class="result">-</div></div>
+<div class="card"><h3>5. Oil Saturation</h3><label>Sw</label><input id="sw2" type="number"><button onclick="calcSo()">Calculate</button><div id="rSo" class="result">-</div></div>
+<div class="card"><h3>6. Recovery Factor</h3><label>Np (STO)</label><input id="np" type="number"><label>STOIIP</label><input id="sto" type="number"><button onclick="calcRF()">Calculate</button><div id="rRF" class="result">-</div></div>
+
+<div class="card" style="grid-column: 1 / -1; background: linear-gradient(135deg,#1e293b,#0f172a); border:1px solid #38bdf8;">
+<h3>📘 NYSC Mobilization Guide 2026 - NDU Petroleum Engineering</h3>
+<div style="text-align:left; font-size:13px; line-height:1.8; color:#cbd5e1;">
+<p><strong>1. Who is Eligible?</strong> All NDU graduates below 30 years at time of graduation. Your DOB on NDU portal must match JAMB.</p>
+<p><strong>2. Senate List:</strong> After final year clearance, NDU ICT uploads your name. Check at <b>portal.nysc.org.ng → Senate List</b>. Search with matric UG/19/0892 format.</p>
+<p><strong>3. Required Documents for Registration:</strong><br>• NDU Statement of Result / Certificate<br>• JAMB Admission Letter & Result Slip<br>• Passport photo (white background)<br>• Valid Email & Phone</p>
+<p><strong>4. For PET Department:</strong> Supervisor must sign project clearance. Ensure no carryover, departmental dues cleared, DSA clearance done at Wilberforce Island.</p>
+<p><strong>5. Common Problems & Fix:</strong><br>• Name mismatch → Go to Exams & Records, Amassoma<br>• DOB error → Court Affidavit + JAMB correction<br>• Not on Senate List → Contact Faculty Officer / DSA</p>
+<p><strong>6. Batch:</strong> NDU usually goes Batch B Stream II or Batch C. Stay updated on NYSC official Instagram.</p>
+<p style="color:#38bdf8; font-weight:bold; background:#0f172a; padding:10px; border-radius:8px; margin-top:10px;">💡 Tip: This Toolkit (UG/19/0892) will remain FREE for NDU Petroleum students using admin code: NDU-GODSTIME-ADMIN-99</p>
+</div>
+</div>
+
+</div>
+<div class="footer"><p><strong>Built by Dolor Godstime Onovugha (UG/19/0892)</strong><br>© 2026 NDU Petroleum Toolkit + NYSC Guide</p></div>
+</div>
+
 <script>
-// === EMAILJS CONFIG - FINAL FIXED ===
+function calcPor(){let vp=parseFloat(document.getElementById("pv").value),bv=parseFloat(document.getElementById("bv").value);if(!vp||!bv)return;document.getElementById("rPor").innerText=(vp/bv*100).toFixed(2)+" %"}
+function calcPerm(){let q=parseFloat(document.getElementById("q").value),mu=parseFloat(document.getElementById("u").value),L=parseFloat(document.getElementById("L").value),A=parseFloat(document.getElementById("A").value),dP=parseFloat(document.getElementById("dP").value);if(!q||!mu||!L||!A||!dP)return;document.getElementById("rPerm").innerText=(q*mu*L/(A*dP)).toFixed(4)+" Darcy"}
+function calcSTOIIP(){let Ar=parseFloat(document.getElementById("area").value),h=parseFloat(document.getElementById("h").value),por=parseFloat(document.getElementById("por").value),sw=parseFloat(document.getElementById("sw").value),fvf=parseFloat(document.getElementById("fvf").value);if(!Ar||!h||!por||!fvf)return;let sto=7758*Ar*h*por*(1-sw)/fvf;document.getElementById("rSTOIIP").innerText=sto.toLocaleString(undefined,{maximumFractionDigits:2})+" STB"}
+function calcFVF(){let v=parseFloat(document.getElementById("vRes").value),vs=parseFloat(document.getElementById("vSt").value);if(!v||!vs)return;document.getElementById("rFVF").innerText=(v/vs).toFixed(4)}
+function calcSo(){let sw=parseFloat(document.getElementById("sw2").value);if(isNaN(sw))return;document.getElementById("rSo").innerText=(1-sw).toFixed(4)}
+function calcRF(){let np=parseFloat(document.getElementById("np").value),sto=parseFloat(document.getElementById("sto").value);if(!np||!sto)return;document.getElementById("rRF").innerText=(np/sto*100).toFixed(2)+" %"}
+</script>
+
+<script>
+// === EMAILJS FINAL ===
 const EMAILJS_PUBLIC_KEY = "AY9jEifwIPRBqpPjZ";
 const EMAILJS_TEMPLATE_ID = "template_qcs3aef"; 
 const EMAILJS_SERVICE_ID = "service_hzprlr6";
-
 emailjs.init(EMAILJS_PUBLIC_KEY);
-
 const PAYSTACK_KEY = "pk_live_522e90bc4d7ec45abe67ed9b807d7512a0d8ce5b";
 const MASTER_CODE = "NDU-GODSTIME-ADMIN-99";
-
 function checkCode(){
   const code = document.getElementById("codeInput").value.trim().toUpperCase();
-  const msg = document.getElementById("msg");
   if(code === MASTER_CODE || code.startsWith("NDU-")){
     localStorage.setItem("ndu_paid","yes");
-    localStorage.setItem("ndu_code", code);
     document.getElementById("paywall").style.display="none";
     document.getElementById("calculatorContent").style.display="block";
+    window.scrollTo(0,0);
   } else {
-    msg.innerText="Invalid Code! Pay ₦1,000 to get code";
+    document.getElementById("msg").innerHTML='<div style="color:#f87171;background:#1e293b;padding:10px;border-radius:8px;border:1px solid #f87171">❌ Invalid Code! Pay ₦1,000</div>';
   }
 }
-function copyInputCode(){
-  let v = document.getElementById("codeInput").value.trim();
-  if(!v){ alert("No code yet, pay first"); return; }
-  navigator.clipboard.writeText(v);
-  alert("Copied: "+v);
-}
-
 function payWithPaystack(){
   const buyerEmail = document.getElementById("buyerEmail").value.trim();
   if(!buyerEmail || !buyerEmail.includes("@")){
@@ -43,24 +115,26 @@ function payWithPaystack(){
     callback: function(response){
       let code = "NDU-" + response.reference.slice(-8).toUpperCase();
       document.getElementById("codeInput").value = code;
-      document.getElementById("msg").innerHTML = '<div style="background:#0f172a;padding:12px;border-radius:10px;border:2px solid #38bdf8;"><p style="color:#22c55e;font-weight:bold;margin:0;">✅ Payment Successful! Sending to '+buyerEmail+'</p><p style="color:white;font-size:18px;font-weight:bold;margin:8px 0;word-break:break-all;">'+code+'</p></div>';
-
-      // SEND EMAIL AUTOMATICALLY - FIXED
+      document.getElementById("msg").innerHTML = `<div style="background:#1e293b;padding:18px;border-radius:12px;border:2px solid #38bdf8;text-align:center;"><p style="color:#22c55e;font-weight:bold;margin:0 0 10px">✅ Payment Successful! Sending email to ${buyerEmail}</p><p style="color:#94a3b8;font-size:12px;margin:0">Your Access Code:</p><p style="color:white;font-size:22px;font-weight:bold;letter-spacing:1px;margin:10px 0;word-break:break-all;">${code}</p></div>`;
       emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         to_email: buyerEmail,
         user_email: buyerEmail,
         access_code: code,
         ref: response.reference
       }).then(function(){
-        document.getElementById("msg").innerHTML += '<p style="color:#22c55e;margin-top:10px;">📧 Code sent to '+buyerEmail+' - Check inbox/spam</p><button onclick="checkCode()" type="button" style="background:white;color:black;padding:10px 20px;border:none;border-radius:6px;width:auto;font-weight:bold;margin-top:10px;cursor:pointer;">Unlock Now →</button>';
+        document.getElementById("msg").innerHTML += `<p style="color:#22c55e;margin-top:12px;font-weight:bold;">📧 Code sent to ${buyerEmail} - Check inbox/spam</p><button onclick="checkCode()" style="background:white;color:black;padding:12px 20px;border:none;border-radius:8px;width:auto;font-weight:bold;margin-top:10px;cursor:pointer;">Unlock Now →</button>`;
       }, function(err){
-        console.log(err);
-        document.getElementById("msg").innerHTML += '<p style="color:#f87171;">Email failed but your code is: '+code+' - Screenshot it!</p><button onclick="checkCode()" type="button" style="background:white;color:black;padding:10px 20px;border:none;border-radius:6px;width:auto;font-weight:bold;margin-top:10px;cursor:pointer;">Unlock Now →</button>';
+        document.getElementById("msg").innerHTML += `<p style="color:#fbbf24;margin-top:10px;">Email failed but your code is: ${code} - Screenshot it!</p><button onclick="checkCode()" style="background:white;color:black;padding:12px 20px;border:none;border-radius:8px;width:auto;font-weight:bold;margin-top:10px;cursor:pointer;">Unlock Now →</button>`;
       });
     },
-    onClose: function(){ alert("Payment window closed"); }
+    onClose: function(){ document.getElementById("msg").innerHTML='<div style="color:#fbbf24;background:#1e293b;padding:10px;border-radius:8px;">Payment window closed</div>'; }
   });
   handler.openIframe();
+}
+function copyInputCode(){
+  let v = document.getElementById("codeInput").value.trim();
+  if(!v){ alert("No number yet! Pay first"); return; }
+  navigator.clipboard.writeText(v).then(()=>{ alert("✅ Copied: "+v); });
 }
 window.onload = function(){
   if(localStorage.getItem("ndu_paid")==="yes"){
@@ -68,4 +142,6 @@ window.onload = function(){
     document.getElementById("calculatorContent").style.display="block";
   }
 }
-        </script>
+</script>
+</body>
+  </html>                                                                                                                                                                              </html>
