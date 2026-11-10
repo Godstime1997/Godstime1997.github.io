@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NDU CGPA Calculator - Godstime Student Hub</title>
+<meta name="description" content="NDU CGPA Calculator - Calculate GPA and CGPA with NDU Grading System">
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f1f5f9;margin:0;line-height:1.5;color:#0f172a}
+header{background:linear-gradient(135deg,#0f172a,#0ea5e9);color:#fff;text-align:center;padding:28px 15px}
+header h1{margin:0;font-size:22px}
+header p{margin:6px 0 0;color:#cbd5e1;font-size:13px}
+.wrap{max-width:900px;margin:auto;padding:15px}
+.card{background:#fff;border:2px solid #0ea5e9;border-radius:14px;padding:16px;margin-bottom:15px}
+.card h3{margin:0 0 10px;font-size:17px}
+.small{font-size:12px;color:#64748b;margin:0 0 10px}
+label{font-size:12px;font-weight:700;color:#334155}
+.input,.select{width:100%;padding:11px;border:2px solid #e2e8f0;border-radius:10px;font-weight:700;background:#f8fafc;margin:4px 0 8px}
+.input:focus,.select:focus{outline:none;border-color:#0ea5e9;background:#f0f9ff}
+.row{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;align-items:end}
+@media(max-width:600px){.row{grid-template-columns:1fr 1fr}.row .del{grid-column:span 2}}
+.btn{padding:13px 16px;border:0;border-radius:10px;font-weight:800;cursor:pointer;font-size:14px;width:100%}
+.btn-dark{background:#0f172a;color:#fff}
+.btn-blue{background:#0ea5e9;color:#fff}
+.btn-green{background:#0d6e3f;color:#fff}
+.btn-red{background:#fee2e2;color:#991b1b}
+.btn-outline{background:#fff;color:#0f172a;border:1px solid #e2e8f0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+.box{background:#f8fafc;border-left:5px solid #0ea5e9;padding:12px;border-radius:8px;font-size:13px;white-space:pre-wrap;margin-top:10px}
+.ans{background:#0f172a;color:#22c55e;padding:14px;border-radius:10px;font-weight:800;font-size:16px;text-align:center;margin-top:10px}
+.ans span{color:#fff;font-size:13px;font-weight:400;display:block}
+.badge{display:inline-block;background:#dcfce7;color:#166534;font-size:11px;padding:4px 10px;border-radius:20px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+th,td{padding:8px;border-bottom:1px solid #e2e8f0;text-align:left}
+th{background:#f8fafc}
+.footer{text-align:center;padding:20px;color:#64748b;font-size:12px}
+.footer a{color:#0f172a;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>🎓 NDU CGPA Calculator</h1>
+<p>Godstime Student Hub • NDU Grading System • 5-Point Scale</p>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<h3>📚 Add Your Courses <span class="badge">NDU SYSTEM</span></h3>
+<p class="small">A=5, B=4, C=3, D=2, E=1, F=0 • Example: PET 201 - 3 Units - A</p>
+
+<div id="courses"></div>
+
+<button class="btn btn-blue" onclick="addCourse()">+ ADD ANOTHER COURSE</button>
+<button class="btn btn-outline" style="margin-top:8px" onclick="loadExample()">Load Example - 100 Level 1st Semester</button>
+</div>
+
+<div class="card">
+<h3>🧮 Calculate</h3>
+<div class="grid2">
+<div>
+<label>Previous CGPA (if any - leave 0 if 100L 1st Sem)</label>
+<input id="prevCGPA" class="input" type="number" step="0.01" min="0" max="5" value="0">
+</div>
+<div>
+<label>Previous Total Units Passed (before this semester)</label>
+<input id="prevUnits" class="input" type="number" min="0" value="0">
+</div>
+</div>
+<button class="btn btn-dark" onclick="calculate()">CALCULATE GPA & CGPA →</button>
+<div id="result" class="box">Add courses and click Calculate...</div>
+<div id="final" class="ans" style="display:none"></div>
+<div id="breakdown"></div>
+</div>
+
+<div class="card">
+<h3>🏆 NDU Classification</h3>
+<table>
+<tr><th>CGPA</th><th>Class</th></tr>
+<tr><td>4.50 - 5.00</td><td>🥇 First Class Honours</td></tr>
+<tr><td>3.50 - 4.49</td><td>🥈 Second Class Upper (2:1)</td></tr>
+<tr><td>2.40 - 3.49</td><td>🥉 Second Class Lower (2:2)</td></tr>
+<tr><td>1.50 - 2.39</td><td>Third Class</td></tr>
+<tr><td>1.00 - 1.49</td><td>Pass</td></tr>
+<tr><td>Below 1.00</td><td>Fail / Withdraw</td></tr>
+</table>
+<p class="small" style="margin-top:10px">Note: This is the standard Nigerian 5-point system used by NDU. Always confirm with your department for final graduation requirement.</p>
+</div>
+
+<div class="card" style="text-align:center">
+<a href="./index.html" class="btn btn-outline" style="display:inline-block;width:auto;text-decoration:none">← Back to Home</a>
+<a href="./advanced-engineering-mathematics.html" class="btn btn-dark" style="display:inline-block;width:auto;text-decoration:none;margin-left:8px">🧮 20 Topics Math →</a>
+</div>
+
+</div>
+<div class="footer">© 2026 Godstime Student Hub • Built by Godstime Onovughe • NDU</div>
+
+<script>
+var grades={A:5,B:4,C:3,D:2,E:1,F:0};
+function addCourse(code,units,grade){
+  var div=document.createElement('div');
+  div.className='row';
+  div.innerHTML='<div><label>Course Code</label><input class="input c-code" placeholder="e.g. PET 201" value="'+(code||'')+'"></div>'
+  +'<div><label>Units</label><input class="input c-unit" type="number" min="1" max="6" value="'+(units||3)+'"></div>'
+  +'<div><label>Grade</label><select class="select c-grade"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>'
+  +'<button class="btn btn-red del" onclick="this.parentElement.remove();calculate()">✕</button>';
+  document.getElementById('courses').appendChild(div);
+  if(grade) div.querySelector('.c-grade').value=grade;
+}
+function loadExample(){
+  document.getElementById('courses').innerHTML='';
+  var ex=[['MTH 101',3,'A'],['PHY 101',3,'B'],['CHM 101',3,'B'],['ENG 101',2,'A'],['PET 101',2,'A'],['GST 101',2,'B']];
+  ex.forEach(function(e){addCourse(e[0],e[1],e[2])});
+  calculate();
+}
+function getClass(cgpa){
+  if(cgpa>=4.5) return '🥇 FIRST CLASS HONOURS';
+  if(cgpa>=3.5) return '🥈 SECOND CLASS UPPER (2:1)';
+  if(cgpa>=2.4) return '🥉 SECOND CLASS LOWER (2:2)';
+  if(cgpa>=1.5) return 'THIRD CLASS';
+  if(cgpa>=1.0) return 'PASS';
+  return 'FAIL - SEE YOUR ADVISER';
+}
+function calculate(){
+  var rows=document.querySelectorAll('#courses .row');
+  if(rows.length===0){document.getElementById('result').innerText='Add at least 1 course first.';return;}
+  var totalUnits=0, totalPoints=0, html='<table><tr><th>Course</th><th>Units</th><th>Grade</th><th>Points</th></tr>';
+  rows.forEach(function(r){
+    var code=r.querySelector('.c-code').value||'Course';
+    var u=parseFloat(r.querySelector('.c-unit').value)||0;
+    var g=r.querySelector('.c-grade').value;
+    var pts=u*grades[g];
+    totalUnits+=u; totalPoints+=pts;
+    html+='<tr><td>'+code+'</td><td>'+u+'</td><td>'+g+' ('+grades[g]+')</td><td>'+pts+'</td></tr>';
+  });
+  html+='</table>';
+  var gpa = totalUnits>0 ? totalPoints/totalUnits : 0;
+  var prevCGPA=parseFloat(document.getElementById('prevCGPA').value)||0;
+  var prevUnits=parseFloat(document.getElementById('prevUnits').value)||0;
+  var cumUnits = prevUnits + totalUnits;
+  var cumPoints = (prevCGPA*prevUnits) + totalPoints;
+  var cgpa = cumUnits>0 ? cumPoints/cumUnits : gpa;
+  var cls=getClass(cgpa);
+  document.getElementById('result').innerText=
+    'THIS SEMESTER:\nTotal Units = '+totalUnits+'\nTotal Grade Points = '+totalPoints+'\nGPA = '+totalPoints+' ÷ '+totalUnits+' = '+gpa.toFixed(2)+
+    '\n\nCUMULATIVE:\nTotal Units So Far = '+cumUnits+'\nCGPA = '+cgpa.toFixed(2)+' - '+cls;
+  var f=document.getElementById('final');
+  f.style.display='block';
+  f.innerHTML='CGPA: '+cgpa.toFixed(2)+' • '+cls+'<span>GPA This Semester: '+gpa.toFixed(2)+' | Total Units: '+totalUnits+'</span>';
+  document.getElementById('breakdown').innerHTML=html;
+  // Advice
+  var advice='';
+  if(cgpa>=4.5) advice='🔥 Keep it up! You are on First Class track. Don\'t drop below 4.5.';
+  else if(cgpa>=3.5) advice='💪 You are close to First Class. You need to score mostly A\'s next semester to cross 4.5.';
+  else if(cgpa>=2.4) advice='📈 You can still push to 2:1. Focus on your carry-overs and core PET courses.';
+  else advice='⚠️ See your course adviser. Focus on passing all courses next semester, avoid F.';
+  document.getElementById('breakdown').innerHTML+='<div class="box">'+advice+'</div>';
+}
+// Load 5 empty rows on start
+for(var i=0;i<5;i++) addCourse('','','A');
+</script>
+</body>
+  </html>
