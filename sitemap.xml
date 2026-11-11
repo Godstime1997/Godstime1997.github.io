@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://godstime1997.github.io/</loc></url>
-<url><loc>https://godstime1997.github.io/porosity-calculator.html</loc></url>
-<url><loc>https://godstime1997.github.io/nysc-ppa-posting-2026-how-to-check.html</loc></url>
-<url><loc>https://godstime1997.github.io/nysc-camp-requirements-what-to-take-2026.html</loc></url>
-<url><loc>https://godstime1997.github.io/nysc-call-up-letter-2026-how-to-print.html</loc></url>
-<url><loc>https://godstime1997.github.io/nysc-allowance-2026-how-much.html</loc></url>
+  <url><loc>https://godstime1997.github.io/</loc><priority>1.0</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-camp-packing-checklist.html</loc><priority>0.9</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-ppa-relocation-tool-2026.html</loc><priority>0.9</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-clearance-pop-calculator.html</loc><priority>0.9</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-survival-guide.html</loc><priority>0.9</priority></url>
+  <url><loc>https://godstime1997.github.io/ndu-cgpa-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/porosity-calculator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/advanced-engineering-mathematics.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-ppa-posting-2026-how-to-check.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-camp-requirements-what-to-take-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-call-up-letter-2026-how-to-print.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-allowance-2026-how-much.html</loc><priority>0.8</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-allowance-20.html</loc><priority>0.6</priority></url>
+  <url><loc>https://godstime1997.github.io/nysc-call-up-letter-2.html</loc><priority>0.6</priority></url>
+  <url><loc>https://godstime1997.github.io/history-of-nysc-in-ni.html</loc><priority>0.6</priority></url>
+  <url><loc>https://godstime1997.github.io/about.html</loc><priority>0.5</priority></url>
+  <url><loc>https://godstime1997.github.io/contact.html</loc><priority>0.5</priority></url>
 </urlset>
