@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYSC Camp Packing Checklist 2026 - What To Take To Camp</title>
+<meta name="description" content="NYSC Camp Packing Checklist 2026. Tick what you have packed, see your progress, print your list. What to take to NYSC orientation camp.">
+<link rel="canonical" href="https://godstime1997.github.io/nysc-camp-packing-checklist.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1439876525955206" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box} body{font-family:Arial,sans-serif;background:#f8fafc;color:#222;margin:0;line-height:1.6}
+.wrap{max-width:800px;margin:auto;padding:16px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:16px}
+h1{color:#0d6e3f;font-size:26px;margin:0 0 8px} h2{color:#0d6e3f;font-size:18px;margin:22px 0 10px;border-left:4px solid #0d6e3f;padding-left:10px}
+.bar{height:14px;background:#e2e8f0;border-radius:20px;overflow:hidden} #fill{height:100%;width:0%;background:#0d6e3f;transition:.3s}
+label{display:flex;gap:10px;align-items:flex-start;padding:10px 8px;border-bottom:1px solid #f1f5f9;cursor:pointer;font-size:15px}
+label input{width:20px;height:20px;margin-top:2px;accent-color:#0d6e3f}
+label.done{color:#94a3b8;text-decoration:line-through}
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;border:0;cursor:pointer}
+.btn-green{background:#0d6e3f;color:#fff} .btn-dark{background:#0f172a;color:#fff} .btn-outline{background:#fff;border:1px solid #e2e8f0;color:#222}
+a{color:#0d6e3f;text-decoration:none;font-weight:700}
+@media print{ .no-print{display:none!important} label{border:0} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="no-print">← Back to Home</a>
+<div class="card">
+<h1>🎒 NYSC Camp Packing Checklist 2026</h1>
+<p>Tick wetin you don pack. E go save for your phone. Print am before you travel.</p>
+<div class="bar"><div id="fill"></div></div>
+<p><b id="pct">0% packed</b> • <span id="count">0 / 0 items</span></p>
+<div class="no-print" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+<button class="btn btn-green" onclick="window.print()">🖨️ Print My List</button>
+<button class="btn btn-outline" onclick="resetAll()">Reset</button>
+</div>
+</div>
+
+<div class="card" id="list"></div>
+
+<div class="card no-print">
+<h2>Next Read</h2>
+<p><a href="nysc-camp-requirements-what-to-take-2026.html">Camp Requirements Full List</a> | <a href="nysc-call-up-letter-2.html">Call-Up Letter Guide</a> | <a href="nysc-allowance-20.html">Allowance N77k</a></p>
+<p><a href="index.html">← Back to Home</a></p>
+</div>
+</div>
+<script>
+const groups=[
+["📄 Documents - MOST IMPORTANT",["Call-Up Letter (Original + 4 copies)","Green Card (Original + 4 copies)","Degree / HND Certificate (Original + 4 copies)","Statement of Result","School ID Card","Passport Photographs (12 copies)","Medical Fitness Certificate","COVID / Health Card if required"]],
+["👕 NYSC Uniform & Clothes",["White T-Shirts (5-7)","White Shorts (3-4)","White Socks (5 pairs)","White Canvas / Sneakers","NYSC Crested Vest","Plain White Towel","Night Wear / Pyjamas","Slippers / Crocs"]],
+["🧴 Toiletries & Personal",["Toilet Soap + Sponge","Toothpaste + Brush","Body Cream / Vaseline","Deodorant / Perfume","Detergent / Soap","Bucket + Broom (buy in camp if heavy)","Toilet Roll","Sanitary Pads / Provisions"]],
+["💊 Health & Money",["Drugs / Medication (if any)","Mosquito Repellent / Net","Cash - N30k to N50k","ATM Card","Power Bank","Phone Charger","Padlock (2)","Torchlight"]],
+["🚫 DO NOT TAKE",["Laptop - can be stolen","Expensive jewellery","Too many clothes","Original documents without photocopy"]]
+];
+const box=document.getElementById('list');
+let all=[];
+groups.forEach(([title,items])=>{
+  let h=document.createElement('h2'); h.textContent=title; box.appendChild(h);
+  items.forEach((t,i)=>{
+    let key=title+'-'+i;
+    let lab=document.createElement('label');
+    let cb=document.createElement('input'); cb.type='checkbox'; cb.checked=localStorage.getItem(key)==='1';
+    if(cb.checked) lab.classList.add('done');
+    cb.onchange=()=>{localStorage.setItem(key,cb.checked?'1':'0'); lab.classList.toggle('done',cb.checked); update();};
+    lab.append(cb, document.createTextNode(' '+t)); box.appendChild(lab); all.push(cb);
+  });
+});
+function update(){
+  let done=all.filter(c=>c.checked).length;
+  let p=Math.round(done/all.length*100);
+  document.getElementById('fill').style.width=p+'%';
+  document.getElementById('pct').textContent=p+'% packed';
+  document.getElementById('count').textContent=done+' / '+all.length+' items';
+}
+function resetAll(){ if(confirm('Reset all ticks?')){ localStorage.clear(); location.reload(); } }
+update();
+</script>
+</body>
+</html>
