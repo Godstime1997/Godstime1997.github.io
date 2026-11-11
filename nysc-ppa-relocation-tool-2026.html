@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYSC PPA & Relocation Tool 2026 - Check State, Allowance, PPA</title>
+<meta name="description" content="NYSC PPA & Relocation Tool 2026. Pick your state, see allowance, camp address, cost of living, best PPA and relocation chance.">
+<link rel="canonical" href="https://godstime1997.github.io/nysc-ppa-relocation-tool-2026.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1439876525955206" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:#f8fafc;color:#222;margin:0;line-height:1.6}
+.wrap{max-width:800px;margin:auto;padding:16px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:16px}
+h1{color:#0d6e3f;font-size:25px;margin:0 0 8px}h2{color:#0d6e3f;font-size:18px;border-left:4px solid #0d6e3f;padding-left:10px}
+select,input{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:12px;font-size:16px;margin:8px 0}
+.btn{display:inline-block;padding:13px 18px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;border:0;cursor:pointer}
+.btn-green{background:#0d6e3f;color:#fff;width:100%}.btn-dark{background:#0f172a;color:#fff}.btn-outline{background:#fff;border:1px solid #e2e8f0;color:#222}
+a{color:#0d6e3f;text-decoration:none;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px}
+.box b{color:#0d6e3f}
+.warn{background:#fffbeb;border-left:4px solid #f59e0b;padding:14px;border-radius:8px}
+table{width:100%;border-collapse:collapse;margin-top:10px}td,th{border:1px solid #e2e8f0;padding:10px;text-align:left;font-size:14px}th{background:#f0fdf4}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html">← Back to Home</a>
+<div class="card">
+<h1>📍 NYSC PPA & Relocation Tool 2026</h1>
+<p>Pick your state of deployment. See allowance, camp, best PPA, cost of living + relocation chance — before you travel.</p>
+<label><b>1. Where NYSC post you?</b></label>
+<select id="state"></select>
+<label><b>2. Reason for relocation? (optional)</b></label>
+<select id="reason">
+<option value="none">No relocation - I go stay</option>
+<option value="health">Health / Medical</option>
+<option value="marriage">Marriage</option>
+<option value="security">Security</option>
+<option value="work">Work / Job</option>
+</select>
+<button class="btn btn-green" onclick="check()">Check My State Now →</button>
+</div>
+
+<div class="card" id="result" style="display:none"></div>
+
+<div class="card">
+<h2>How To Relocate After Camp - Real Steps</h2>
+<p><b>1. Health:</b> Go camp clinic, get medical report, apply for relocation with proof. Highest approval.</p>
+<p><b>2. Marriage:</b> Marriage certificate + husband's ID + proof of residence. Very high approval for women.</p>
+<p><b>3. Security:</b> Write to State Coordinator with genuine reason. Medium approval.</p>
+<p><b>4. Work:</b> Hardest. Need PPA rejection letter + new PPA acceptance letter from desired state.</p>
+<div class="warn"><b>⚠️ Warning:</b> No pay anybody for relocation. NYSC relocation is FREE. Anybody wey collect money na scam.</div>
+</div>
+
+<div class="card">
+<h2>Best PPA Types (If You Can Choose)</h2>
+<table><tr><th>PPA Type</th><th>Pay</th><th>Stress</th></tr>
+<tr><td>Private Company / Bank / Oil</td><td>N20k - N50k</td><td>Medium</td></tr>
+<tr><td>Federal / State Ministry</td><td>N5k - N15k</td><td>Low</td></tr>
+<tr><td>Private School</td><td>N10k - N20k</td><td>High</td></tr>
+<tr><td>Govt School (Rural)</td><td>N0 - N10k</td><td>High</td></tr>
+<tr><td>Hospital / Clinic</td><td>N10k - N25k</td><td>Medium</td></tr></table>
+</div>
+
+<div class="card">
+<p><a href="nysc-camp-packing-checklist.html">🎒 Packing Checklist Tool</a> | <a href="nysc-allowance-20.html">💰 Allowance N77k</a> | <a href="nysc-call-up-letter-2.html">📄 Call-Up Letter</a></p>
+<p><a href="index.html">← Back to Home</a></p>
+</div>
+</div>
+<script>
+const data={
+"Lagos":{allow:"N15k - N20k",camp:"NYSC Orientation Camp, Iyana Ipaja, Lagos",cost:"High - Lodge N250k - N500k / year",ppa:"Banks, Companies, Tech, Schools",reloc:"Low - Everybody wan stay Lagos"},
+"Abuja (FCT)":{allow:"N10k - N15k",camp:"NYSC Orientation Camp, Kubwa, Abuja",cost:"Very High - Lodge N300k - N600k / year",ppa:"Ministries, Agencies, Companies",reloc:"Low"},
+"Rivers":{allow:"N15k - N30k",camp:"NYSC Orientation Camp, Nonwa Gbam, Tai LGA",cost:"Medium - Lodge N150k - N300k / year",ppa:"Oil companies, Schools, Ministries",reloc:"Medium"},
+"Akwa Ibom":{allow:"N15k",camp:"NYSC Orientation Camp, Ikot Obio Ndoho, Nsit Atai",cost:"Low - Lodge N80k - N150k / year",ppa:"Schools, Ministries, Companies",reloc:"Medium"},
+"Enugu":{allow:"N10k",camp:"NYSC Orientation Camp, Awgu",cost:"Low - Lodge N80k - N150k / year",ppa:"Schools, Hospitals, Ministries",reloc:"Medium"},
+"Kano":{allow:"N5k - N10k",camp:"NYSC Orientation Camp, Karaye",cost:"Very Low - Lodge N50k - N100k / year",ppa:"Schools, Ministries",reloc:"High - Many relocate"},
+"Kaduna":{allow:"N5k - N10k",camp:"NYSC Orientation Camp, Kaduna",cost:"Low - Lodge N70k - N120k / year",ppa:"Schools, Companies",reloc:"Medium"},
+"Oyo":{allow:"N5k - N15k",camp:"NYSC Orientation Camp, Iseyin",cost:"Low - Lodge N80k - N150k / year",ppa:"Schools, Companies, Farms",reloc:"Medium"},
+"Anambra":{allow:"N8k - N10k",camp:"NYSC Orientation Camp, Umuawulu / Mbaukwu",cost:"Low - Lodge N80k - N150k / year",ppa:"Schools, Companies",reloc:"Medium"},
+"Delta":{allow:"N10k - N20k",camp:"NYSC Orientation Camp, Issele-Uku",cost:"Medium - Lodge N120k - N250k / year",ppa:"Schools, Oil, Ministries",reloc:"Medium"},
+"Bayelsa":{allow:"N15k - N25k",camp:"NYSC Orientation Camp, Kaiama",cost:"Medium - Lodge N100k - N200k / year",ppa:"Schools, Ministries",reloc:"Medium"},
+"Cross River":{allow:"N5k - N10k",camp:"NYSC Orientation Camp, Obubra",cost:"Low - Lodge N70k - N130k / year",ppa:"Schools, Tourism",reloc:"Medium"},
+"Others":{allow:"N5k - N15k (varies)",camp:"Check your Call-Up Letter for camp address",cost:"Low to Medium - Ask corpers for lodge price",ppa:"Schools, Ministries, Hospitals",reloc:"Medium to High"}
+};
+const sel=document.getElementById('state');
+Object.keys(data).forEach(s=>{let o=document.createElement('option');o.value=s;o.textContent=s;sel.appendChild(o);});
+function check(){
+ let s=sel.value, r=document.getElementById('reason').value, d=data[s];
+ let chance = r==="health" ? "85% - Very High if you get medical report" : r==="marriage" ? "90% - Very High for married women" : r==="security" ? "60% - Need genuine proof" : r==="work" ? "30% - Hard, need new PPA letter" : "You no need relocation - Stay and enjoy";
+ document.getElementById('result').style.display='block';
+ document.getElementById('result').innerHTML=`<h2>Result for ${s} 📍</h2><div class="grid"><div class="box"><b>State Allowance</b><br>${d.allow}</div><div class="box"><b>FG Allowance</b><br>N77,000 monthly</div><div class="box"><b>Camp Address</b><br>${d.camp}</div><div class="box"><b>Cost of Living</b><br>${d.cost}</div><div class="box"><b>Best PPA</b><br>${d.ppa}</div><div class="box"><b>Relocation Chance</b><br>${chance}</div></div><p style="margin-top:14px"><b>Total you fit earn:</b> N77,000 + ${d.allow} + PPA pay = <b>N87k - N130k / month</b></p><p><a class="btn btn-green" href="nysc-camp-packing-checklist.html">Next: Pack For Camp →</a></p>`;
+ document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
