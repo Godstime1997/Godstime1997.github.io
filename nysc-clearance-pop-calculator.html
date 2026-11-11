@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYSC Clearance & POP Date Calculator 2026 - When Will I Pass Out?</title>
+<meta name="description" content="NYSC Clearance & POP Date Calculator. Enter your camp resumption date, see your POP date, monthly clearance dates and total allowance you will earn.">
+<link rel="canonical" href="https://godstime1997.github.io/nysc-clearance-pop-calculator.html">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1439876525955206" crossorigin="anonymous"></script>
+<style>
+*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:#f8fafc;color:#222;margin:0;line-height:1.6}
+.wrap{max-width:800px;margin:auto;padding:16px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px;margin-bottom:16px}
+h1{color:#0d6e3f;font-size:25px;margin:0 0 8px}h2{color:#0d6e3f;font-size:18px;border-left:4px solid #0d6e3f;padding-left:10px}
+label{font-weight:700;font-size:14px} input,select{width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:12px;font-size:16px;margin:8px 0}
+.btn{display:block;width:100%;padding:14px;border-radius:12px;border:0;background:#0d6e3f;color:#fff;font-weight:700;font-size:16px;cursor:pointer}
+.btn-outline{background:#fff;border:1px solid #e2e8f0;color:#222;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;display:inline-block}
+a{color:#0d6e3f;text-decoration:none;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px}
+.box b{color:#0d6e3f}
+table{width:100%;border-collapse:collapse;margin-top:12px}td,th{border:1px solid #e2e8f0;padding:10px;text-align:left;font-size:14px}th{background:#f0fdf4}
+.warn{background:#fffbeb;border-left:4px solid #f59e0b;padding:14px;border-radius:8px}
+@media print{.no-print{display:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a href="index.html" class="no-print">← Back to Home</a>
+<div class="card">
+<h1>📅 NYSC Clearance & POP Date Calculator 2026</h1>
+<p>When will you pass out? When is your monthly clearance? How much allowance you go earn total? Enter your camp date, see everything.</p>
+<label>1. When did you enter camp? (Camp Resumption Date)</label>
+<input type="date" id="campDate">
+<label>2. Your Batch</label>
+<select id="batch">
+<option value="Batch A">Batch A</option>
+<option value="Batch B">Batch B</option>
+<option value="Batch C">Batch C</option>
+</select>
+<label>3. Your State Allowance per month (optional)</label>
+<input type="number" id="stateAllow" placeholder="e.g. 15000 - leave 0 if none" value="10000">
+<button class="btn no-print" onclick="calc()">Calculate My POP Date →</button>
+</div>
+
+<div class="card" id="result" style="display:none"></div>
+
+<div class="card">
+<h2>NYSC Monthly Clearance Rules - No Miss Am</h2>
+<p><b>1.</b> Clearance is every month, usually last week. If you miss am, NYSC go hold your allawee.</p>
+<p><b>2.</b> Go with your PPA letter, sign, collect your clearance slip.</p>
+<p><b>3.</b> CDS is every Wednesday. Miss 3 CDS = query / extension.</p>
+<p><b>4.</b> Final clearance is 1 week before POP. Do am early.</p>
+<div class="warn"><b>⚠️ Extension:</b> If you miss clearance, travel without permission, or miss CDS, NYSC fit extend your service by 21 days - 3 months. No risk am.</div>
+</div>
+
+<div class="card no-print">
+<p><a href="nysc-ppa-relocation-tool-2026.html">📍 PPA & Relocation Tool</a> | <a href="nysc-camp-packing-checklist.html">🎒 Packing Checklist</a> | <a href="nysc-allowance-20.html">💰 Allowance N77k</a></p>
+<p><a href="index.html">← Back to Home</a></p>
+</div>
+</div>
+<script>
+function fmt(d){ return d.toLocaleDateString('en-NG',{weekday:'short',day:'numeric',month:'long',year:'numeric'}); }
+function addMonths(d,m){ let x=new Date(d); x.setMonth(x.getMonth()+m); return x; }
+function calc(){
+ let v=document.getElementById('campDate').value;
+ if(!v){ alert('Pick your camp resumption date first'); return; }
+ let camp=new Date(v);
+ let batch=document.getElementById('batch').value;
+ let stateAllow=parseInt(document.getElementById('stateAllow').value||0);
+ let pop=addMonths(camp,12);
+ let today=new Date();
+ let monthsLeft=Math.max(0, Math.ceil((pop-today)/(1000*60*60*24*30)));
+ let totalFG=77000*12;
+ let totalState=stateAllow*12;
+ let total=totalFG+totalState;
+ let rows='';
+ for(let i=1;i<=12;i++){
+   let cDate=addMonths(camp,i);
+   let status = cDate < today ? '✅ Done' : cDate.toDateString()===today.toDateString() ? '🟡 Today' : '⏳ Upcoming';
+   rows+=`<tr><td>Month ${i} Clearance</td><td>${fmt(cDate)}</td><td>${status}</td></tr>`;
+ }
+ document.getElementById('result').style.display='block';
+ document.getElementById('result').innerHTML=`
+ <h2>Your NYSC Timeline - ${batch} 🎉</h2>
+ <div class="grid">
+ <div class="box"><b>Camp Started</b><br>${fmt(camp)}</div>
+ <div class="box"><b>POP / Passing Out Date</b><br>${fmt(pop)}</div>
+ <div class="box"><b>Months Remaining</b><br>${monthsLeft} months</div>
+ <div class="box"><b>Total Allowance You Go Earn</b><br>₦${total.toLocaleString()} (FG ₦${totalFG.toLocaleString()} + State ₦${totalState.toLocaleString()})</div>
+ </div>
+ <h2 style="margin-top:18px">Your 12 Monthly Clearance Dates</h2>
+ <table><tr><th>Clearance</th><th>Date (Estimate)</th><th>Status</th></tr>${rows}</table>
+ <p style="margin-top:12px"><b>Final Clearance:</b> ${fmt(addMonths(camp,12))} - 7 days before POP. <b>CDS:</b> Every Wednesday.</p>
+ <button class="btn no-print" onclick="window.print()">🖨️ Print My Timeline</button>
+ `;
+ document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
