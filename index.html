@@ -5,78 +5,194 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NYSC Guide 2026 - Registration, Camp, PPA, Allowance & POP</title>
-<meta name="description" content="NYSC 2026 Complete Guide - Registration, Senate List, Camp Requirements, Call-up Letter, Allowance N77k, PPA Posting, Relocation, Clearance & POP">
+<meta name="description" content="NYSC 2026 Complete Guide - Registration, Senate List, Camp Requirements, Call-up Letter, Allowance N77k, PPA Posting, Relocation, Clearance & POP. Free tools for every Nigerian corper.">
 <meta name="author" content="Godstime Onovughe">
 <link rel="canonical" href="https://godstime1997.github.io/">
 <style>
-*{box-sizing:border-box} body{font-family:Arial,sans-serif;background:#f8fafc;color:#0f172a;margin:0;line-height:1.6}
-header{background:linear-gradient(135deg,#0f172a,#1e3a5f);color:#fff;text-align:center;padding:36px 15px}
-header h1{color:#38bdf8;margin:0 0 6px;font-size:30px} header p{color:#cbd5e1;margin:0;font-size:14px}
-.wrap{max-width:900px;margin:auto;padding:18px}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
-.card h3{margin:0 0 6px;font-size:19px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.badge{background:#dcfce7;color:#166534;font-size:11px;padding:4px 10px;border-radius:20px}
-.grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.btn{display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;font-size:13.5px;font-weight:700}
-.btn-dark{background:#0f172a;color:#fff} .btn-green{background:#0d6e3f;color:#fff}
-.btn-blue{background:#e0f2fe;color:#0f172a;border:1px solid #bae6fd}
-.btn-outline{background:#fff;color:#0f172a;border:1px solid #e2e8f0}
-.small{font-size:13px;color:#64748b;margin:6px 0 0}
-.footer{text-align:center;padding:30px;color:#64748b;font-size:12px;line-height:1.8}
-.footer a{color:#0f172a;text-decoration:none;font-weight:600}
-.label{font-size:12px;font-weight:800;letter-spacing:1px;color:#0d6e3f;text-transform:uppercase}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+a{text-decoration:none}
+/* TOP BAR */
+.topbar{background:#0f172a;color:#fff;padding:14px 16px;position:sticky;top:0;z-index:10}
+.topbar-inner{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:19px;letter-spacing:.3px}
+.logo span{color:#22c55e}
+.nav{display:flex;gap:16px;font-size:13px;font-weight:700}
+.nav a{color:#cbd5e1}
+.nav a:hover{color:#fff}
+/* HERO */
+.hero{background:linear-gradient(135deg,#0f172a 0%,#14532d 100%);color:#fff;padding:44px 16px 36px;text-align:center}
+.hero-inner{max-width:750px;margin:auto}
+.hero h1{font-size:32px;line-height:1.2;margin-bottom:10px}
+.hero h1 em{color:#4ade80;font-style:normal}
+.hero p{color:#d1fae5;font-size:15px;margin-bottom:20px}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 18px;border-radius:12px;font-weight:800;font-size:14px}
+.btn-green{background:#22c55e;color:#0f172a}
+.btn-white{background:#fff;color:#0f172a}
+.trust{margin-top:20px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:12px;color:#bbf7d0;font-weight:700}
+.wrap{max-width:1000px;margin:auto;padding:20px 16px}
+/* SECTION */
+.section-title{font-size:20px;font-weight:900;margin:28px 0 4px}
+.section-sub{color:#64748b;font-size:13.5px;margin-bottom:14px}
+/* TOOLS */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tool{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px}
+.tool h3{font-size:16px;margin-bottom:4px}
+.tool p{font-size:13px;color:#64748b;margin-bottom:12px}
+.tool a{font-weight:800;color:#15803d;font-size:14px}
+.tool.featured{border:2px solid #22c55e;background:#f0fdf4}
+/* ARTICLES */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px}
+.card span{font-size:11px;font-weight:900;letter-spacing:1px;color:#15803d;text-transform:uppercase}
+.card h3{font-size:16px;margin:6px 0 6px;line-height:1.4}
+.card p{font-size:13px;color:#64748b;margin-bottom:12px}
+.card a{font-weight:800;color:#0f172a;font-size:13.5px}
+.card a:hover{color:#15803d}
+/* ABOUT BOX */
+.about{background:#0f172a;color:#fff;border-radius:16px;padding:22px;margin-top:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.about h3{font-size:18px}
+.about p{font-size:13px;color:#cbd5e1;margin-top:4px;max-width:600px}
+.about .btn{white-space:nowrap}
+/* FOOTER */
+footer{max-width:1000px;margin:30px auto;padding:20px 16px 40px;text-align:center;color:#64748b;font-size:12.5px;line-height:1.9}
+footer a{color:#0f172a;font-weight:700}
+footer .brand{font-weight:900;color:#0f172a;font-size:14px}
+@media(max-width:600px){
+  .tools,.grid{grid-template-columns:1fr}
+  .hero h1{font-size:26px}
+  .nav{display:none}
+  .topbar-inner{justify-content:center}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>NYSC Guide 2026</h1>
-<p>Complete Guide for Every Nigerian Corper | Registration to POP | Updated Nov 2026</p>
-</header>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">NYSC<span>Guide</span> 2026</div>
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="./nysc-registration-guide-2026.html">Registration</a>
+      <a href="./nysc-camp-requirements-what-to-take-2026.html">Camp</a>
+      <a href="./nysc-allowance-2026-how-much.html">Allowance</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Your Complete <em>NYSC 2026</em> Guide — From Registration To POP</h1>
+    <p>Simple guides + free tools. No confusion. Know what to do, what to pack, where to go, and how much you will be paid.</p>
+    <div class="hero-btns">
+      <a class="btn btn-green" href="./nysc-camp-packing-checklist.html">🎒 Check Packing List</a>
+      <a class="btn btn-white" href="./nysc-registration-guide-2026.html">Start Registration Guide →</a>
+    </div>
+    <div class="trust">
+      <span>✓ Free Tools</span><span>✓ Updated Nov 2026</span><span>✓ For Batch A, B & C</span>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
 
-<div class="card" style="border:2px solid #0d6e3f">
-<p class="label">Most Popular • NYSC Tools</p>
-<h3>🎓 NYSC 2026 Tools <span class="badge">USE FREE</span></h3>
-<p class="small">Use the tool, no need read long article</p>
-<div class="grid">
-<a class="btn btn-green" href="./nysc-camp-packing-checklist.html">🎒 Packing Checklist - Tick & Print</a>
-<a class="btn btn-green" href="./nysc-ppa-relocation-tool-2026.html">📍 PPA & Relocation - Check State</a>
-<a class="btn btn-green" href="./nysc-clearance-pop-calculator.html">📅 POP & Clearance Calculator</a>
-<a class="btn btn-green" href="./nysc-survival-guide.html" style="background:#f59e0b;color:#111;">📖 NYSC Survival Guide</a>
-</div>
+  <h2 class="section-title">Free NYSC Tools</h2>
+  <p class="section-sub">Use the tool in 1 minute, no need read long article.</p>
+  <div class="tools">
+    <div class="tool featured">
+      <h3>🎒 Camp Packing Checklist</h3>
+      <p>Tick what you don pack, print am, no forget anything for camp.</p>
+      <a href="./nysc-camp-packing-checklist.html">Use Checklist →</a>
+    </div>
+    <div class="tool">
+      <h3>📍 PPA & Relocation Checker</h3>
+      <p>Check your state, PPA posting and how relocation works.</p>
+      <a href="./nysc-ppa-relocation-tool-2026.html">Check My State →</a>
+    </div>
+    <div class="tool">
+      <h3>📅 POP & Clearance Calculator</h3>
+      <p>Calculate your POP date and monthly clearance.</p>
+      <a href="./nysc-clearance-pop-calculator.html">Calculate POP →</a>
+    </div>
+    <div class="tool">
+      <h3>📖 NYSC Survival Guide</h3>
+      <p>Real tips to survive camp, PPA and service year.</p>
+      <a href="./nysc-survival-guide.html">Read Survival Guide →</a>
+    </div>
+  </div>
+
+  <h2 class="section-title">Latest NYSC Guides</h2>
+  <p class="section-sub">Full step-by-step articles — Camp, PPA, Allowance, Call-Up Letter.</p>
+  <div class="grid">
+    <div class="card">
+      <span>Step 1 • Registration</span>
+      <h3>NYSC Registration 2026: How To Register Without Mistake</h3>
+      <p>Senate list, documents, biometric and common errors to avoid.</p>
+      <a href="./nysc-registration-guide-2026.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>Step 2 • Senate List</span>
+      <h3>NYSC Senate List 2026: How To Check If Your Name Is There</h3>
+      <p>Why your name fit miss and what to do immediately.</p>
+      <a href="./nysc-senate-list-2026.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>Step 3 • Camp</span>
+      <h3>NYSC Camp Requirements 2026: What To Take To Camp</h3>
+      <p>Complete list of documents, clothes and items you must carry.</p>
+      <a href="./nysc-camp-requirements-what-to-take-2026.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>Step 4 • Call-Up</span>
+      <h3>NYSC Call-Up Letter 2026: How To Print It</h3>
+      <p>Where to print, what to check, and what to do if e get error.</p>
+      <a href="./nysc-call-up-letter-2026-how-to-print.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>Step 5 • PPA</span>
+      <h3>NYSC PPA Posting 2026: How To Check Your PPA</h3>
+      <p>How PPA posting works and how to get good PPA.</p>
+      <a href="./nysc-ppa-posting-2026-how-to-check.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>Money • Allowance</span>
+      <h3>NYSC Allowance 2026: How Much Is N77k & When You Go Get Am?</h3>
+      <p>Breakdown of allowance, PPA pay and bank issues.</p>
+      <a href="./nysc-allowance-2026-how-much.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>History</span>
+      <h3>History of NYSC in Nigeria</h3>
+      <p>Why NYSC start, how e don change, and wetin e mean today.</p>
+      <a href="./history-of-nysc-in-ni.html">Read Guide →</a>
+    </div>
+    <div class="card">
+      <span>Old Pages</span>
+      <h3>Old NYSC Pages (Kept For Google)</h3>
+      <p>Previous versions we still keep so old links no break.</p>
+      <a href="./nysc-allowance-20.html">Allowance (Old)</a> • <a href="./nysc-call-up-letter-2.html">Call-Up (Old)</a>
+    </div>
+  </div>
+
+  <div class="about">
+    <div>
+      <h3>About NYSC Guide 2026</h3>
+      <p>Free guide by Godstime Onovughe to help every Nigerian corper. Independent guide — not affiliated with NYSC.</p>
+    </div>
+    <a class="btn btn-green" href="./about.html">About Us →</a>
+  </div>
+
 </div>
 
-<div class="card">
-<p class="label">Read & Learn</p>
-<h3>📖 NYSC 2026 Guides</h3>
-<p class="small">Full articles - Registration, Camp, PPA, Allowance, Call-Up Letter</p>
-<div class="grid">
-<a class="btn btn-outline" href="./nysc-registration-guide-2026.html">Registration Guide</a>
-<a class="btn btn-outline" href="./nysc-senate-list-2026.html">Senate List Guide</a>
-<a class="btn btn-outline" href="./nysc-ppa-posting-2026-how-to-check.html">PPA Posting Guide</a>
-<a class="btn btn-outline" href="./nysc-camp-requirements-what-to-take-2026.html">Camp Requirements</a>
-<a class="btn btn-outline" href="./nysc-call-up-letter-2026-how-to-print.html">Call-Up Letter Guide</a>
-<a class="btn btn-outline" href="./nysc-allowance-2026-how-much.html">Allowance N77k Guide</a>
-<a class="btn btn-outline" href="./history-of-nysc-in-ni.html">History of NYSC</a>
-</div>
-<p class="small" style="margin-top:14px">Old pages (keep for Google): <a href="./nysc-allowance-20.html">Allowance (Old)</a> • <a href="./nysc-call-up-letter-2.html">Call-Up (Old)</a></p>
-</div>
+<footer>
+  <p class="brand">NYSC Guide 2026</p>
+  <p><a href="./about.html">About</a> | <a href="./contact.html">Contact</a> | <a href="./privacy.html">Privacy Policy</a> | <a href="./ads.txt">ads.txt</a></p>
+  <p>© 2026 godstime1997.github.io | Warri, Delta State, Nigeria<br>Not affiliated with NYSC | All guides are free</p>
+  <p style="margin-top:10px;font-weight:800;color:#0f172a">Built by Godstime Onovughe</p>
+</footer>
 
-<div class="card">
-<h3>ℹ️ About</h3>
-<div class="grid">
-<a class="btn btn-outline" href="./about.html">About</a>
-<a class="btn btn-outline" href="./contact.html">Contact</a>
-<a class="btn btn-outline" href="./privacy.html">Privacy Policy</a>
-</div>
-</div>
-
-</div>
-<div class="footer">
-<p>© 2026 NYSC Guide | Godstime1997.github.io | Warri, NG</p>
-<p><a href="./about.html">About</a> | <a href="./contact.html">Contact</a> | <a href="./privacy.html">Privacy Policy</a> | <a href="./ads.txt">ads.txt</a></p>
-<p>Not affiliated with NYSC | ads.txt active | All files verified working</p>
-<p style="margin-top:14px;font-weight:800;color:#0f172a;font-size:14px;letter-spacing:0.5px">Built by Godstime Onovughe</p>
-</div>
 </body>
 </html>
