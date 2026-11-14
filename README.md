@@ -1,20 +1,31 @@
-# Godstime Dolor - Student Resource Hub | Petroleum Engineering & NYSC Guide
+# NYSC Guide 2026 | Registration, Camp, PPA, Allowance & POP
 
-This website is a resource hub for Nigerian students — built by Godstime Dolor, Petroleum Engineering student.
+This website is a free NYSC guide for Nigerian graduates — built by Godstime Onovughe.
 
-### What You Will Find Here:
+Live Site: https://godstime1997.github.io/
 
-**1. NYSC Guide 2026 (Main Section)**
-Complete guide for NYSC 2026 Batch A, B, C — registration, camp requirements, allowance, PPA posting, call-up letter, senate list.
-- Visit: https://godstime1997.github.io/stories.html
+## What You Will Find Here:
 
-**2. Petroleum Engineering Tools**
-Free calculators for students — Porosity Calculator, Drilling Mud, etc.
-- Tool: https://godstime1997.github.io/porosity-calculator.html
+### 1. NYSC Guide 2026 - Complete Guide for Batch A, B, C
+- NYSC Registration & Senate List
+- NYSC Camp Requirements & Packing Checklist
+- NYSC Call-Up Letter Guide
+- NYSC Allowance N77k Guide
+- NYSC PPA Posting & Relocation
+- NYSC Clearance & POP Calculator
+- NYSC Survival Guide
+- History of NYSC in Nigeria
 
-### About Me
-Petroleum Engineering student | I build free tools and write guides to help Nigerian students.
+Visit: https://godstime1997.github.io/
 
-Portfolio: https://godstime1997.com.ng
-Contact: via contact.html on this site
+## About
+
+NYSC Guide 2026 is an independent educational guide to help Nigerian graduates navigate NYSC from registration to POP.
+
+We are not affiliated with the National Youth Service Corps (NYSC).
+
+Contact: via contact.html on this site / godstime1997@gmail.com
+
+Location: Warri, Delta State, Nigeria
+
 License: MIT
